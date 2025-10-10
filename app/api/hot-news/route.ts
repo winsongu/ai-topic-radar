@@ -14,9 +14,9 @@ import { supabase, hasSupabaseConfig } from '@/lib/supabase'
  */
 export async function GET() {
   try {
-    // 如果没有配置Supabase，返回空数据（让前端使用虚拟数据）
+    // 检查Supabase配置
     if (!hasSupabaseConfig) {
-      console.log('Supabase not configured, returning empty data')
+      console.warn('Supabase is not configured. Returning empty data.')
       return NextResponse.json({
         success: true,
         data: [],
