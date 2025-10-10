@@ -34,7 +34,7 @@ const mockSuggestions: TopicSuggestion[] = [
     description:
       "从中华文明延续性切入，分析文化传承的当代价值，展示传统文化创新案例，探讨新媒体在文化传播中的作用，提出文化发展建议。",
     source: "百度热搜",
-    coverImage: "https://images.unsplash.com/photo-1513781050488-6dd358209a1b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    coverImage: "https://images.unsplash.com/photo-1513781050488-6dd358209a1b?ixlib=rb-4.1.0&auto=format&fit=crop&w=1000&q=80",
     heat: 485672,
   },
   {
@@ -48,7 +48,7 @@ const mockSuggestions: TopicSuggestion[] = [
     description:
       "分析热搜榜单的传播机制，探讨文化内容如何借助热点传播，分享用户关注点，提供内容创作和传播策略的实操方法。",
     source: "百度热搜",
-    coverImage: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    coverImage: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.1.0&auto=format&fit=crop&w=1000&q=80",
     heat: 892341,
   },
   {
@@ -62,7 +62,7 @@ const mockSuggestions: TopicSuggestion[] = [
     description:
       "结合热搜案例，分析数字平台如何助力文化自信建设，探讨传统文化与现代技术的融合，提出提升文化影响力的具体路径。",
     source: "百度热搜",
-    coverImage: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    coverImage: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.1.0&auto=format&fit=crop&w=1000&q=80",
     heat: 356789,
   },
   {
@@ -76,7 +76,7 @@ const mockSuggestions: TopicSuggestion[] = [
     description:
       "探讨AI技术在内容创作领域的应用，分析智能推荐算法对内容传播的影响，展示AI辅助创作的实际案例，预测未来发展趋势。",
     source: "36氪",
-    coverImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    coverImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.1.0&auto=format&fit=crop&w=1000&q=80",
     heat: 1245678,
   },
   {
@@ -89,7 +89,7 @@ const mockSuggestions: TopicSuggestion[] = [
     marketValue: "高",
     description: "深度解析新能源汽车市场现状，对比国内外主要品牌竞争格局，分析技术创新趋势，提供市场预测和投资建议。",
     source: "今日头条",
-    coverImage: "https://images.unsplash.com/photo-1593941707882-a5bac6861d75?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    coverImage: "https://images.unsplash.com/photo-1593941707882-a5bac6861d75?ixlib=rb-4.1.0&auto=format&fit=crop&w=1000&q=80",
     heat: 678923,
   },
   {
@@ -102,7 +102,7 @@ const mockSuggestions: TopicSuggestion[] = [
     marketValue: "中",
     description: "分析短视频平台的用户特征和内容偏好，总结成功品牌案例的营销策略，提供短视频内容创作和投放的实用技巧。",
     source: "抖音热榜",
-    coverImage: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    coverImage: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.1.0&auto=format&fit=crop&w=1000&q=80",
     heat: 523456,
   },
 ]
