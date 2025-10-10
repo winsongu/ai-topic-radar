@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase'
+import { supabase, hasSupabaseConfig } from '@/lib/supabase'
 
 /**
  * GET /api/hot-news
@@ -14,6 +14,16 @@ import { supabase } from '@/lib/supabase'
  */
 export async function GET() {
   try {
+    // 如果没有配置Supabase，返回空数据（让前端使用虚拟数据）
+    if (!hasSupabaseConfig) {
+      console.log('Supabase not configured, returning empty data')
+      return NextResponse.json({
+        success: true,
+        data: [],
+        updatedAt: new Date().toISOString()
+      })
+    }
+
     // 1. 获取所有激活的平台
     const { data: platforms, error: platformError } = await supabase
       .from('platforms')
