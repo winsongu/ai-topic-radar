@@ -214,22 +214,17 @@ export default function HomePage() {
 
       {/* Platforms Grid */}
       <section id="platforms-section" className="container mx-auto px-4 py-12">
-        <div className="mb-8 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <h3 className="text-2xl font-bold text-foreground">精选平台</h3>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleRefresh}
-              disabled={refreshing || loading}
-              className="flex items-center gap-2"
-            >
-              <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
-              {refreshing ? '更新中...' : '更新数据'}
-            </Button>
-          </div>
-          <Button variant="link" className="text-primary hover:no-underline">
-            查看全部 →
+        <div className="mb-8 flex items-center gap-4">
+          <h3 className="text-2xl font-bold text-foreground">精选平台</h3>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleRefresh}
+            disabled={refreshing || loading}
+            className="flex items-center gap-2"
+          >
+            <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+            {refreshing ? '更新中...' : '更新数据'}
           </Button>
         </div>
 
