@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search } from "lucide-react"
+import { Search, RefreshCw } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Navigation } from "@/components/navigation"
@@ -73,46 +73,57 @@ const virtualPlatforms = [
 export default function HomePage() {
   const [platforms, setPlatforms] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [refreshing, setRefreshing] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedPlatform, setSelectedPlatform] = useState<any>(null)
   const router = useRouter()
 
   // 从API获取真实数据（前3个平台）+ 虚拟数据（后3个平台）
-  useEffect(() => {
-    async function fetchData() {
-      try {
+  const fetchData = async (isManualRefresh = false) => {
+    try {
+      if (isManualRefresh) {
+        setRefreshing(true)
+      } else {
         setLoading(true)
-        const response = await fetch('/api/hot-news')
-        const result = await response.json()
-        
-        if (result.success && result.data.length > 0) {
-          // 合并真实数据和虚拟数据
-          // 前3个平台从Supabase获取：百度热搜、中新网教育、人民网重要讲话
-          const realPlatforms = result.data
-            .filter((p: any) => ['baidu', 'chinanews', 'people'].includes(p.id))
-            .sort((a: any, b: any) => {
-              const order = ['baidu', 'chinanews', 'people']
-              return order.indexOf(a.id) - order.indexOf(b.id)
-            })
-          
-          // 合并真实数据和虚拟数据
-          setPlatforms([...realPlatforms, ...virtualPlatforms])
-        } else {
-          // 如果API失败，只显示虚拟数据
-          console.warn('No data from API, using virtual data only')
-          setPlatforms(virtualPlatforms)
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error)
-        // 出错时使用虚拟数据
-        setPlatforms(virtualPlatforms)
-      } finally {
-        setLoading(false)
       }
+      
+      const response = await fetch('/api/hot-news')
+      const result = await response.json()
+      
+      if (result.success && result.data.length > 0) {
+        // 合并真实数据和虚拟数据
+        // 前3个平台从Supabase获取：百度热搜、中新网教育、人民网重要讲话
+        const realPlatforms = result.data
+          .filter((p: any) => ['baidu', 'chinanews', 'people'].includes(p.id))
+          .sort((a: any, b: any) => {
+            const order = ['baidu', 'chinanews', 'people']
+            return order.indexOf(a.id) - order.indexOf(b.id)
+          })
+        
+        // 合并真实数据和虚拟数据
+        setPlatforms([...realPlatforms, ...virtualPlatforms])
+      } else {
+        // 如果API失败，只显示虚拟数据
+        console.warn('No data from API, using virtual data only')
+        setPlatforms(virtualPlatforms)
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error)
+      // 出错时使用虚拟数据
+      setPlatforms(virtualPlatforms)
+    } finally {
+      setLoading(false)
+      setRefreshing(false)
     }
-    
+  }
+
+  // 手动刷新数据
+  const handleRefresh = () => {
+    fetchData(true)
+  }
+
+  useEffect(() => {
     fetchData()
-    
     // 移除自动刷新，改为每天0点更新策略
   }, [])
 
@@ -155,10 +166,10 @@ export default function HomePage() {
       <section className="bg-gradient-to-b from-muted/30 to-background py-12 md:py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="mb-4 text-balance text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
-            AI选题雷达
+            AI今日热榜
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-pretty text-base text-muted-foreground md:text-lg">
-            汇聚全网热点新闻，每日0点自动更新，帮助内容创作者快速发现热门话题
+            为您每日提供PPT创作灵感与素材
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
@@ -204,7 +215,19 @@ export default function HomePage() {
       {/* Platforms Grid */}
       <section id="platforms-section" className="container mx-auto px-4 py-12">
         <div className="mb-8 flex items-center justify-between">
-          <h3 className="text-2xl font-bold text-foreground">精选平台</h3>
+          <div className="flex items-center gap-4">
+            <h3 className="text-2xl font-bold text-foreground">精选平台</h3>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleRefresh}
+              disabled={refreshing || loading}
+              className="flex items-center gap-2"
+            >
+              <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+              {refreshing ? '更新中...' : '更新数据'}
+            </Button>
+          </div>
           <Button variant="link" className="text-primary hover:no-underline">
             查看全部 →
           </Button>
