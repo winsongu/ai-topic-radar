@@ -15,7 +15,7 @@ const virtualPlatforms = [
     id: "36kr",
     name: "36氪",
     description: "创业资讯和科技新闻",
-    updateTime: "2025-10-10 00:00",
+    updateTime: new Date().toISOString(),
     color: "blue",
     news: [
       { id: 1, title: "某AI初创公司完成B轮融资", summary: "估值达10亿美元，成为新晋独角兽", time: "1小时前", url: "#", hot: 2345678 },
@@ -34,7 +34,7 @@ const virtualPlatforms = [
     id: "toutiao",
     name: "今日头条",
     description: "个性化推荐资讯平台",
-    updateTime: "2025-10-10 00:00",
+    updateTime: new Date().toISOString(),
     color: "red",
     news: [
       { id: 1, title: "国际局势最新动态", summary: "多国领导人举行重要会晤", time: "1小时前", url: "#", hot: 4123456 },
@@ -53,7 +53,7 @@ const virtualPlatforms = [
     id: "douyin",
     name: "抖音热榜",
     description: "短视频平台热门内容",
-    updateTime: "2025-10-10 00:00",
+    updateTime: new Date().toISOString(),
     color: "black",
     news: [
       { id: 1, title: "创意短视频爆火", summary: "某创作者视频播放量破亿", time: "30分钟前", url: "#", hot: 5678901 },
@@ -178,6 +178,14 @@ export default function HomePage() {
               onClick={scrollToPlatforms}
             >
               最新热点
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="min-w-40 rounded-xl border-2 bg-card shadow-sm hover:shadow-md"
+              onClick={() => router.push("/competitor-dynamics")}
+            >
+              竞品动态
             </Button>
             <Button
               size="lg"

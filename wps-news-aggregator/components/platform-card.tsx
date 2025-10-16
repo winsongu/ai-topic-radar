@@ -1,13 +1,12 @@
 "use client"
-
-import { Clock, ExternalLink } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { formatChineseDateTime } from "@/lib/utils"
+import Image from "next/image"
 
 interface Platform {
   id: string
   name: string
+  logo?: string
   description: string
   updateTime: string
   color: string
@@ -36,6 +35,9 @@ const colorMap: Record<string, string> = {
 export function PlatformCard({ platform, onClick }: PlatformCardProps) {
   const hasNews = platform.news.length > 0
 
+  const now = new Date()
+  const updateDate = `${now.getMonth() + 1}月${now.getDate()}日 ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`
+
   return (
     <Card className="group relative min-h-[420px] overflow-hidden rounded-2xl border-0 bg-card shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       <div className={`absolute left-0 right-0 top-0 h-1 ${colorMap[platform.color] || "bg-blue-500"}`} />
@@ -43,12 +45,24 @@ export function PlatformCard({ platform, onClick }: PlatformCardProps) {
       <CardHeader className="pb-3 pt-5">
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <CardTitle className="mb-1.5 text-lg font-semibold">{platform.name}</CardTitle>
+            <div className="mb-1.5 flex items-center gap-2">
+              {platform.logo && (
+                <div className="flex h-6 w-6 shrink-0 items-center justify-center overflow-hidden rounded-md bg-muted">
+                  <Image
+                    src={platform.logo || "/placeholder.svg"}
+                    alt={platform.name}
+                    width={24}
+                    height={24}
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+              )}
+              <CardTitle className="text-lg font-semibold">{platform.name}</CardTitle>
+            </div>
             <CardDescription className="text-sm text-muted-foreground">{platform.description}</CardDescription>
           </div>
-          <div className="flex items-center gap-1.5 rounded-full bg-muted/50 px-2.5 py-1 text-xs text-blue-600 font-medium">
-            <Clock className="h-3 w-3" />
-            <span>{formatChineseDateTime(platform.updateTime)}</span>
+          <div className="rounded-full bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-600 dark:bg-blue-950/30 dark:text-blue-400">
+            {updateDate}
           </div>
         </div>
       </CardHeader>
@@ -57,16 +71,13 @@ export function PlatformCard({ platform, onClick }: PlatformCardProps) {
         {hasNews ? (
           <div className="space-y-3">
             <div className="max-h-[260px] space-y-3 overflow-y-auto pr-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted-foreground/20 hover:scrollbar-thumb-muted-foreground/40">
-              {platform.news.slice(0, 10).map((item, index) => (
+              {platform.news.slice(0, 5).map((item, index) => (
                 <div key={item.id} className="space-y-1.5">
                   <div className="flex items-start gap-2.5 text-sm">
                     <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-primary/10 text-xs font-semibold text-primary shadow-sm">
                       {index + 1}
                     </span>
-                    <div className="flex-1 flex items-start justify-between gap-2">
-                      <p className="line-clamp-2 text-foreground/90 cursor-pointer hover:text-primary transition-colors" onClick={() => window.open(item.url, '_blank')}>{item.title}</p>
-                      <ExternalLink className="h-3 w-3 text-muted-foreground hover:text-primary cursor-pointer flex-shrink-0 mt-0.5" onClick={() => window.open(item.url, '_blank')} />
-                    </div>
+                    <p className="line-clamp-2 flex-1 text-foreground/90">{item.title}</p>
                   </div>
                   <p className="ml-7 line-clamp-2 text-xs text-muted-foreground/70">{item.summary}</p>
                 </div>

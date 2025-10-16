@@ -8,6 +8,7 @@ import { Navigation } from "@/components/navigation"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Calendar as CalendarComponent } from "@/components/ui/calendar"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { formatChineseDateTime } from "@/lib/utils"
 
 // Mock data for competitor templates - 四个平台真实数据
 const mockTemplates = [
@@ -704,7 +705,7 @@ export default function CompetitorDynamicsPage() {
         {/* Results Header */}
         <div className="mb-4 flex items-center justify-between">
           <p className="text-sm text-muted-foreground">共找到 {filteredTemplates.length} 个模板</p>
-          <p className="text-sm text-muted-foreground">最后更新: 2025/01/11</p>
+          <p className="text-sm text-blue-600 font-medium">最后更新: {formatChineseDateTime(new Date().toISOString())}</p>
         </div>
 
         {/* Results Grid - Optimized Card Layout */}
