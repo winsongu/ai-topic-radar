@@ -91,19 +91,18 @@ export default function HomePage() {
       const result = await response.json()
       
       if (result.success && result.data.length > 0) {
-        // 合并真实数据和虚拟数据
-        // 前3个平台从Supabase获取：百度热搜、中新网教育、人民网重要讲话
+        // 使用从 Supabase 获取的真实数据
+        // 如果 Supabase 有数据，优先使用；否则回退到虚拟数据
         const realPlatforms = result.data
-          .filter((p: any) => ['baidu', 'chinanews', 'people'].includes(p.id))
-          .sort((a: any, b: any) => {
-            const order = ['baidu', 'chinanews', 'people']
-            return order.indexOf(a.id) - order.indexOf(b.id)
-          })
         
-        // 合并真实数据和虚拟数据
-        setPlatforms([...realPlatforms, ...virtualPlatforms])
+        if (realPlatforms.length > 0) {
+          setPlatforms(realPlatforms)
+        } else {
+          // 如果 Supabase 暂无数据，显示虚拟数据
+          setPlatforms(virtualPlatforms)
+        }
       } else {
-        // 如果API失败，只显示虚拟数据
+        // 如果 API 失败，显示虚拟数据作为备用
         console.warn('No data from API, using virtual data only')
         setPlatforms(virtualPlatforms)
       }

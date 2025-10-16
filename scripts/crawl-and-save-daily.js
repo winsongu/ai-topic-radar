@@ -7,9 +7,8 @@ const { createClient } = require('@supabase/supabase-js')
 const fs = require('fs').promises
 const path = require('path')
 
-// 引入现有的抓取脚本
-const { processSource } = require('../extract-news-with-real-links.js')
-const { main: saveToSupabase } = require('../save-to-supabase.js')
+// 引入爬虫脚本
+const { crawlPlatform } = require('./news-crawler.js')
 
 // Supabase配置
 const SUPABASE_URL = 'https://sdxgocjszjnrqrfbsspn.supabase.co'
@@ -19,35 +18,15 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
 // 数据源配置
 const dataSources = [
-  {
-    id: 'baidu_hot',
-    name: '百度热搜',
-    url: 'https://top.baidu.com/board?tab=realtime',
-    extractorType: 'baidu',
-    waitFor: 3000
-  },
-  {
-    id: 'people_daily',
-    name: '人民网重要讲话',
-    url: 'https://jhsjk.people.cn/',
-    extractorType: 'people',
-    waitFor: 3000
-  },
-  {
-    id: 'chinanews_edu',
-    name: '中新网教育',
-    url: 'https://www.chinanews.com.cn/rss/importnews.xml',
-    extractorType: 'rss',
-    waitFor: 2000
-  }
+  { id: 'baidu', name: '百度热搜' },
+  { id: '36kr', name: '36氪' },
+  { id: 'toutiao', name: '今日头条' },
+  { id: 'douyin', name: '抖音热榜' },
+  { id: 'weibo', name: '微博热搜' },
+  { id: 'zhihu', name: '知乎热榜' },
+  { id: 'bilibili', name: 'B站热门' },
+  { id: 'xiaohongshu', name: '小红书' }
 ]
-
-// Platform ID映射
-const platformIdMapping = {
-  'baidu_hot': 'baidu',
-  'chinanews_edu': 'chinanews', 
-  'people_daily': 'people'
-}
 
 /**
  * 完整的每日更新流程
@@ -67,23 +46,22 @@ async function dailyUpdate() {
       console.log(`\n📌 处理: ${source.name}`)
       
       // 抓取数据
-      const result = await processSource(source)
+      const result = await crawlPlatform(source.id)
       
-      if (!result.success || result.news.length === 0) {
+      if (!result.success || result.data.length === 0) {
         console.log(`   ⏭️  跳过（无数据）`)
         continue
       }
       
-      console.log(`   ✅ 抓取成功，获得 ${result.news.length} 条新闻`)
+      console.log(`   ✅ 抓取成功，获得 ${result.data.length} 条新闻`)
       
       // 2. 清理旧数据
-      const mappedPlatformId = platformIdMapping[source.id] || source.id
-      console.log(`   🗑️  清理 ${mappedPlatformId} 的旧数据...`)
+      console.log(`   🗑️  清理 ${source.id} 的旧数据...`)
       
       const { error: deleteError } = await supabase
         .from('hot_news')
         .delete()
-        .eq('platform_id', mappedPlatformId)
+        .eq('platform_id', source.id)
       
       if (deleteError) {
         console.log(`   ⚠️  清理失败: ${deleteError.message}`)
@@ -92,8 +70,8 @@ async function dailyUpdate() {
       }
       
       // 3. 插入新数据
-      const newsToInsert = result.news.map(item => ({
-        platform_id: mappedPlatformId,
+      const newsToInsert = result.data.map(item => ({
+        platform_id: source.id,
         title: item.title,
         summary: item.summary,
         url: item.url,
@@ -116,7 +94,7 @@ async function dailyUpdate() {
         totalSuccess += insertedNews.length
       }
       
-      totalProcessed += result.news.length
+      totalProcessed += result.data.length
       
       // 等待2秒，避免API限流
       await new Promise(resolve => setTimeout(resolve, 2000))
@@ -127,20 +105,18 @@ async function dailyUpdate() {
     const today = new Date().toISOString().split('T')[0] + ' 00:00'
     
     for (const source of dataSources) {
-      const mappedPlatformId = platformIdMapping[source.id] || source.id
-      
       const { error: updateError } = await supabase
         .from('platforms')
         .update({ 
           update_frequency: today,
           is_active: true 
         })
-        .eq('id', mappedPlatformId)
+        .eq('id', source.id)
       
       if (updateError) {
-        console.log(`   ⚠️  更新 ${mappedPlatformId} 状态失败: ${updateError.message}`)
+        console.log(`   ⚠️  更新 ${source.id} 状态失败: ${updateError.message}`)
       } else {
-        console.log(`   ✅ ${mappedPlatformId} 状态已更新`)
+        console.log(`   ✅ ${source.id} 状态已更新`)
       }
     }
     
