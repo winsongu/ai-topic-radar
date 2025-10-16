@@ -6,17 +6,64 @@
 const https = require('https');
 const http = require('http');
 
-// 初始化 Firecrawl（如果有 API Key）
+// Firecrawl API Key
 const FIRECRAWL_API_KEY = process.env.FIRECRAWL_API_KEY || '';
-let firecrawl = null;
 
-if (FIRECRAWL_API_KEY) {
-  try {
-    const FirecrawlApp = require('@mendable/firecrawl-js').default;
-    firecrawl = new FirecrawlApp({ apiKey: FIRECRAWL_API_KEY });
-  } catch (error) {
-    console.warn('⚠️  Firecrawl 初始化失败:', error.message);
+/**
+ * 使用 Firecrawl API 抓取网页
+ */
+async function scrapeWithFirecrawl(url) {
+  if (!FIRECRAWL_API_KEY) {
+    throw new Error('FIRECRAWL_API_KEY not configured');
   }
+
+  return new Promise((resolve, reject) => {
+    const postData = JSON.stringify({
+      url: url,
+      formats: ['markdown']
+    });
+
+    const options = {
+      hostname: 'api.firecrawl.dev',
+      path: '/v1/scrape',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${FIRECRAWL_API_KEY}`,
+        'Content-Length': Buffer.byteLength(postData)
+      }
+    };
+
+    const req = https.request(options, (res) => {
+      let data = '';
+
+      res.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      res.on('end', () => {
+        try {
+          const result = JSON.parse(data);
+          if (res.statusCode === 200 && result.success) {
+            resolve(result);
+          } else {
+            reject(new Error(result.error || `HTTP ${res.statusCode}`));
+          }
+        } catch (error) {
+          reject(new Error('Failed to parse response'));
+        }
+      });
+    });
+
+    req.on('error', reject);
+    req.setTimeout(30000, () => {
+      req.destroy();
+      reject(new Error('Request timeout'));
+    });
+
+    req.write(postData);
+    req.end();
+  });
 }
 
 /**
@@ -66,16 +113,14 @@ async function fetchHTML(url, options = {}) {
 async function crawlBaidu() {
   console.log('🔍 开始抓取百度热搜...');
   
-  if (!firecrawl) {
+  if (!FIRECRAWL_API_KEY) {
     console.error('❌ Firecrawl 未配置，无法抓取百度热搜');
     return { success: false, data: [], error: 'Firecrawl not configured' };
   }
   
   try {
     // 使用 Firecrawl 抓取页面
-    const scrapeResult = await firecrawl.scrape('https://top.baidu.com/board?tab=realtime', {
-      formats: ['markdown']
-    });
+    const scrapeResult = await scrapeWithFirecrawl('https://top.baidu.com/board?tab=realtime');
     
     const markdown = scrapeResult.data?.markdown || scrapeResult.markdown || '';
     const items = [];
@@ -132,16 +177,14 @@ async function crawlBaidu() {
 async function crawlChinanews() {
   console.log('🔍 开始抓取中新网教育...');
   
-  if (!firecrawl) {
+  if (!FIRECRAWL_API_KEY) {
     console.error('❌ Firecrawl 未配置，无法抓取中新网');
     return { success: false, data: [], error: 'Firecrawl not configured' };
   }
   
   try {
     // 使用 Firecrawl 抓取页面
-    const scrapeResult = await firecrawl.scrape('https://www.chinanews.com.cn/', {
-      formats: ['markdown']
-    });
+    const scrapeResult = await scrapeWithFirecrawl('https://www.chinanews.com.cn/');
     
     const markdown = scrapeResult.data?.markdown || scrapeResult.markdown || '';
     const items = [];
@@ -189,16 +232,14 @@ async function crawlChinanews() {
 async function crawlPeople() {
   console.log('🔍 开始抓取人民网重要讲话...');
   
-  if (!firecrawl) {
+  if (!FIRECRAWL_API_KEY) {
     console.error('❌ Firecrawl 未配置，无法抓取人民网');
     return { success: false, data: [], error: 'Firecrawl not configured' };
   }
   
   try {
     // 使用 Firecrawl 抓取页面
-    const scrapeResult = await firecrawl.scrape('http://politics.people.com.cn/GB/8198/426918/index.html', {
-      formats: ['markdown']
-    });
+    const scrapeResult = await scrapeWithFirecrawl('http://politics.people.com.cn/GB/8198/426918/index.html');
     
     const markdown = scrapeResult.data?.markdown || scrapeResult.markdown || '';
     const items = [];
