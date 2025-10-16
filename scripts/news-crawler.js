@@ -70,6 +70,19 @@ async function scrapeWithFirecrawl(url) {
 }
 
 /**
+ * 从标题生成智能摘要（不带来源后缀，最多显示两行内容）
+ */
+function generateSummary(title, platform) {
+  // 估算：一行约显示30-35个字符，两行约60-70字符
+  const maxLength = 65;
+  
+  if (title.length > maxLength) {
+    return title.substring(0, maxLength) + '...';
+  }
+  return title;
+}
+
+/**
  * 通用的 HTTP 请求函数
  */
 async function fetchHTML(url, options = {}) {
@@ -150,7 +163,12 @@ async function crawlBaidu() {
         .replace(/\s+/g, ' ')  // 规范化空格
         .trim();
       
-      if (title.length > 3 && title.length < 200 && !title.includes('查看更多') && !title.includes('百度')) {
+      // 过滤无效标题
+      if (title.length > 3 && title.length < 200 && 
+          !title.includes('查看更多') && 
+          !title.includes('查看更') &&
+          !title.includes('百度') &&
+          !/^查看/.test(title)) {
         titles.push({ title, url });
       }
     }
@@ -163,10 +181,11 @@ async function crawlBaidu() {
     // 组合数据（取前10个）
     for (let i = 0; i < Math.min(10, titles.length); i++) {
       const hot = hotValues[i] || (10 - i) * 100000;
+      const title = titles[i].title;
       items.push({
         id: i + 1,
-        title: titles[i].title,
-        summary: `当前热度 ${(hot / 10000).toFixed(1)}万 · 百度实时热搜`,
+        title: title,
+        summary: generateSummary(title, 'baidu'),
         url: titles[i].url,
         hot: hot,
         time: '刚刚'
@@ -183,7 +202,7 @@ async function crawlBaidu() {
 }
 
 /**
- * 中新网教育爬虫（使用 Firecrawl）
+ * 中新网教育爬虫（使用 Firecrawl 抓取 RSS）
  */
 async function crawlChinanews() {
   console.log('🔍 开始抓取中新网教育...');
@@ -194,53 +213,45 @@ async function crawlChinanews() {
   }
   
   try {
-    // 使用 Firecrawl 抓取页面
-    const scrapeResult = await scrapeWithFirecrawl('https://www.chinanews.com.cn/');
+    // 使用 Firecrawl 抓取 RSS 页面
+    const scrapeResult = await scrapeWithFirecrawl('https://www.chinanews.com.cn/rss/importnews.xml');
     
     const markdown = scrapeResult.data?.markdown || scrapeResult.markdown || '';
     const items = [];
     
-    // 从 Markdown 中提取新闻链接和标题
-    const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+    // RSS格式特殊处理：标题和链接直接拼接，格式如：标题http://www.chinanews.com/xxx.shtml
+    // 使用正则匹配：中文标题 + URL
+    const rssPattern = /([^http]+)(http:\/\/www\.chinanews\.com\/[^\s]+\.shtml)/g;
     let match;
     let rank = 1;
     
-    // 过滤关键词（导航、菜单等）
-    const filterKeywords = ['首页', '登录', '注册', '频道', '视频', '图片', '评论', '更多', '关注', '收藏', '分享', '微博', '微信', '客户端'];
+    // 过滤关键词
+    const filterKeywords = ['首页', '登录', '注册', '频道', '视频', '图片', '中新网要闻导读'];
     
-    while ((match = linkPattern.exec(markdown)) !== null && rank <= 10) {
+    while ((match = rssPattern.exec(markdown)) !== null && rank <= 10) {
       let title = match[1].trim();
       let url = match[2].trim();
       
-      // 清理标题中的特殊符号和 Markdown 语法
+      // 清理标题中的特殊符号和多余信息
       title = title
-        .replace(/^!\[/, '')  // 去除 Markdown 图片语法开头
-        .replace(/\\+/g, '')  // 去除反斜杠
+        .replace(/^(　　|\\s+)/, '')  // 去除开头空格
+        .replace(/^-cn/, '')  // 去除 -cn 前缀
+        .replace(/\d{4}\s+\d{2}:\d{2}:\d{2}\s+\+\d{4}/, '')  // 去除时间戳
+        .replace(/[\\]+/g, '')  // 去除反斜杠
         .replace(/\s+/g, ' ')  // 规范化空格
         .trim();
       
-      // 处理相对URL
-      if (!url.startsWith('http')) {
-        url = url.startsWith('/') ? `https://www.chinanews.com.cn${url}` : `https://www.chinanews.com.cn/${url}`;
-      }
-      
       // 过滤条件：
-      // 1. 标题长度合理（8-100字符）
-      // 2. URL 包含日期格式（如 2025/10-16）或新闻ID
-      // 3. 不包含过滤关键词
-      // 4. URL包含 chinanews.com.cn
-      const hasDateInUrl = /\d{4}[/-]\d{1,2}[/-]\d{1,2}/.test(url);
-      const hasNewsId = /\/\d{7,}\.shtml/.test(url);
+      // 1. 标题长度合理（8-200字符）
+      // 2. 不包含过滤关键词
+      // 3. URL有效
       const isFiltered = filterKeywords.some(kw => title.includes(kw));
       
-      if (title.length >= 8 && title.length <= 100 && 
-          (hasDateInUrl || hasNewsId) && 
-          !isFiltered && 
-          url.includes('chinanews.com.cn')) {
+      if (title.length >= 8 && title.length <= 200 && !isFiltered && url) {
         items.push({
           id: rank,
           title: title,
-          summary: `中新网官方发布 · 权威时事报道`,
+          summary: generateSummary(title, 'chinanews'),
           url: url,
           hot: (11 - rank) * 100000,
           time: '刚刚'
@@ -270,8 +281,8 @@ async function crawlPeople() {
   }
   
   try {
-    // 使用 Firecrawl 抓取页面
-    const scrapeResult = await scrapeWithFirecrawl('http://politics.people.com.cn/GB/8198/426918/index.html');
+    // 使用 Firecrawl 抓取页面（重要讲话数据库）
+    const scrapeResult = await scrapeWithFirecrawl('https://jhsjk.people.cn/');
     
     const markdown = scrapeResult.data?.markdown || scrapeResult.markdown || '';
     const items = [];
@@ -282,40 +293,38 @@ async function crawlPeople() {
     let rank = 1;
     
     // 过滤关键词（导航、菜单等）
-    const filterKeywords = ['首页', '登录', '注册', '频道', '视频', '图片', '评论', '更多', '关注', '收藏', '分享', '微博', '微信', '客户端', '地方领导', '反腐', '人民网－', '人民日报－'];
+    const filterKeywords = ['首页', '登录', '注册', '频道', '视频', '图片', '评论', '更多', '关注', '收藏', '分享', '微博', '微信', '客户端', '地方领导', '反腐', '人民网－', '人民日报－', '中国共产党新闻网'];
     
     while ((match = linkPattern.exec(markdown)) !== null && rank <= 10) {
       let title = match[1].trim();
       let url = match[2].trim();
       
-      // 清理标题中的特殊符号和 Markdown 语法
+      // 清理标题中的特殊符号和多余信息
       title = title
         .replace(/^!\[/, '')  // 去除 Markdown 图片语法开头
+        .replace(/_来源：[^_【]+(\d{4}\/\d+)?【[^】]+】_/, '')  // 去除来源信息：_来源：《求是》2025/20【2025-10-15】_
         .replace(/\\+/g, '')  // 去除反斜杠
         .replace(/\s+/g, ' ')  // 规范化空格
         .trim();
       
       // 处理相对URL
       if (!url.startsWith('http')) {
-        url = url.startsWith('/') ? `http://politics.people.com.cn${url}` : `http://politics.people.com.cn/${url}`;
+        url = url.startsWith('/') ? `https://jhsjk.people.cn${url}` : `https://jhsjk.people.cn/${url}`;
       }
       
       // 过滤条件：
       // 1. 标题长度合理（8-100字符）
-      // 2. URL 包含新闻特征（n1/c 或日期格式）
-      // 3. 不包含过滤关键词
-      // 4. URL包含 people.com.cn
-      const hasNewsPattern = /\/(n1\/|c\d+)/.test(url) || /\d{4}[/-]\d{1,2}[/-]\d{1,2}/.test(url);
+      // 2. 不包含过滤关键词
+      // 3. URL包含有效链接
       const isFiltered = filterKeywords.some(kw => title.includes(kw));
       
       if (title.length >= 8 && title.length <= 100 && 
-          hasNewsPattern && 
           !isFiltered && 
-          url.includes('people.com.cn')) {
+          url.includes('http')) {
         items.push({
           id: rank,
           title: title,
-          summary: `人民网官方 · 权威政策与重要讲话`,
+          summary: generateSummary(title, 'people'),
           url: url,
           hot: (11 - rank) * 100000,
           time: '刚刚'

@@ -130,3 +130,7 @@ temp/
 
 # Local test projects
 wps-news-aggregator/
+wps-news-aggregator2/
+
+# Script logs
+scripts/*.log

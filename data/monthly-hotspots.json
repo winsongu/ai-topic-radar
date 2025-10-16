@@ -1,0 +1,482 @@
+{
+  "2025-10": {
+    "year": 2025,
+    "month": 10,
+    "holidays": [
+      {
+        "name": "国庆节",
+        "date": 1,
+        "important": true
+      },
+      {
+        "name": "中华人民共和国国庆节",
+        "date": 1,
+        "important": true
+      },
+      {
+        "name": "世界动物日",
+        "date": 4,
+        "important": true
+      },
+      {
+        "name": "中秋节",
+        "date": 6,
+        "important": true
+      },
+      {
+        "name": "重阳节",
+        "date": 29,
+        "important": true
+      },
+      {
+        "name": "万圣节",
+        "date": 31,
+        "important": true
+      }
+    ],
+    "solarTerms": [
+      {
+        "name": "寒露",
+        "date": 8
+      },
+      {
+        "name": "霜降",
+        "date": 23
+      }
+    ],
+    "keywords": [
+      "国庆,阅兵,7天假期,旅游,爱国",
+      "月饼,赏月,团圆,嫦娥,思念",
+      "登高,敬老,饮酒,赏菊,关爱",
+      "恶搞,惊悚,化妆舞会,装扮,party,南瓜",
+      "国庆,秋游,重阳,万圣节"
+    ]
+  },
+  "2025-11": {
+    "year": 2025,
+    "month": 11,
+    "holidays": [
+      {
+        "name": "万圣节",
+        "date": 1,
+        "important": true
+      },
+      {
+        "name": "双十一购物节",
+        "date": 11,
+        "important": true
+      },
+      {
+        "name": "空军建军节",
+        "date": 11,
+        "important": true
+      },
+      {
+        "name": "电影情人节",
+        "date": 14,
+        "important": true
+      },
+      {
+        "name": "感恩节",
+        "date": 27,
+        "important": true
+      }
+    ],
+    "solarTerms": [
+      {
+        "name": "立冬",
+        "date": 7
+      },
+      {
+        "name": "小雪",
+        "date": 22
+      }
+    ],
+    "keywords": [
+      "恶搞,惊悚,化妆舞会,装扮,party,南瓜",
+      "秋季,感恩,购物,双十一"
+    ]
+  },
+  "2025-12": {
+    "year": 2025,
+    "month": 12,
+    "holidays": [
+      {
+        "name": "拥抱情人节",
+        "date": 14,
+        "important": true
+      },
+      {
+        "name": "圣诞节",
+        "date": 25,
+        "important": true
+      }
+    ],
+    "solarTerms": [
+      {
+        "name": "大雪",
+        "date": 7
+      },
+      {
+        "name": "冬至",
+        "date": 21
+      }
+    ],
+    "keywords": [
+      "圣诞树,礼物,雪花,平安夜,狂欢",
+      "冬季,圣诞,元旦,跨年"
+    ]
+  },
+  "2026-1": {
+    "year": 2026,
+    "month": 1,
+    "holidays": [
+      {
+        "name": "元旦",
+        "date": 1,
+        "important": true
+      }
+    ],
+    "solarTerms": [
+      {
+        "name": "小寒",
+        "date": 5
+      },
+      {
+        "name": "大寒",
+        "date": 20
+      }
+    ],
+    "keywords": [
+      "新年,愿望,跨年,倒计时,新起点",
+      "新年,冬季,温暖,年货"
+    ]
+  },
+  "2026-2": {
+    "year": 2026,
+    "month": 2,
+    "holidays": [
+      {
+        "name": "小年（北方）",
+        "date": 10,
+        "important": true
+      },
+      {
+        "name": "小年（南方）",
+        "date": 11,
+        "important": true
+      },
+      {
+        "name": "情人节",
+        "date": 14,
+        "important": true
+      },
+      {
+        "name": "除夕",
+        "date": 16,
+        "important": true
+      },
+      {
+        "name": "春节",
+        "date": 17,
+        "important": true
+      }
+    ],
+    "solarTerms": [
+      {
+        "name": "立春",
+        "date": 4
+      },
+      {
+        "name": "雨水",
+        "date": 18
+      }
+    ],
+    "keywords": [
+      "爱情,玫瑰,巧克力,浪漫,约会,表白",
+      "新年,红包,春联,团圆,年夜饭,放鞭炮,拜年,压岁钱",
+      "春节,红包,团圆,春天"
+    ]
+  },
+  "2026-3": {
+    "year": 2026,
+    "month": 3,
+    "holidays": [
+      {
+        "name": "元宵节",
+        "date": 3,
+        "important": true
+      },
+      {
+        "name": "妇女节",
+        "date": 8,
+        "important": true
+      },
+      {
+        "name": "国际劳动妇女节",
+        "date": 8,
+        "important": true
+      },
+      {
+        "name": "植树节",
+        "date": 12,
+        "important": true
+      },
+      {
+        "name": "中国植树节",
+        "date": 12,
+        "important": true
+      }
+    ],
+    "solarTerms": [
+      {
+        "name": "惊蛰",
+        "date": 5
+      },
+      {
+        "name": "春分",
+        "date": 20
+      }
+    ],
+    "keywords": [
+      "汤圆,花灯,猜灯谜,闹元宵,圆月",
+      "女性,女王,女神,独立,美丽,关爱",
+      "绿化,环保,种树,春天,生态",
+      "春天,踏青,赏花,植树"
+    ]
+  },
+  "2026-4": {
+    "year": 2026,
+    "month": 4,
+    "holidays": [
+      {
+        "name": "清明节",
+        "date": 5,
+        "important": true
+      }
+    ],
+    "solarTerms": [
+      {
+        "name": "清明",
+        "date": 5
+      },
+      {
+        "name": "谷雨",
+        "date": 20
+      }
+    ],
+    "keywords": [
+      "踏青,祭祖,缅怀,扫墓,春游",
+      "春游,清明,花季,户外"
+    ]
+  },
+  "2026-5": {
+    "year": 2026,
+    "month": 5,
+    "holidays": [
+      {
+        "name": "劳动节",
+        "date": 1,
+        "important": true
+      },
+      {
+        "name": "国际劳动节",
+        "date": 1,
+        "important": true
+      },
+      {
+        "name": "青年节",
+        "date": 4,
+        "important": true
+      },
+      {
+        "name": "五四青年节",
+        "date": 4,
+        "important": true
+      },
+      {
+        "name": "母亲节",
+        "date": 10,
+        "important": true
+      },
+      {
+        "name": "网络情人节",
+        "date": 20,
+        "important": true
+      }
+    ],
+    "solarTerms": [
+      {
+        "name": "立夏",
+        "date": 5
+      },
+      {
+        "name": "小满",
+        "date": 21
+      }
+    ],
+    "keywords": [
+      "假期,旅游,劳动,工作,休息",
+      "青春,活力,梦想,奋斗,年轻",
+      "妈妈,感恩,康乃馨,母爱,孝顺",
+      "劳动,旅游,初夏,放假"
+    ]
+  },
+  "2026-6": {
+    "year": 2026,
+    "month": 6,
+    "holidays": [
+      {
+        "name": "儿童节",
+        "date": 1,
+        "important": true
+      },
+      {
+        "name": "国际儿童节",
+        "date": 1,
+        "important": true
+      },
+      {
+        "name": "端午节",
+        "date": 19,
+        "important": true
+      },
+      {
+        "name": "父亲节",
+        "date": 21,
+        "important": true
+      }
+    ],
+    "solarTerms": [
+      {
+        "name": "芒种",
+        "date": 5
+      },
+      {
+        "name": "夏至",
+        "date": 21
+      }
+    ],
+    "keywords": [
+      "童年,欢乐,玩具,游乐园,亲子",
+      "粽子,龙舟,屈原,艾草,传统",
+      "父爱,爸爸,感恩,陪伴,坚强",
+      "夏天,儿童,毕业,父亲"
+    ]
+  },
+  "2026-7": {
+    "year": 2026,
+    "month": 7,
+    "holidays": [
+      {
+        "name": "建党节",
+        "date": 1,
+        "important": true
+      }
+    ],
+    "solarTerms": [
+      {
+        "name": "小暑",
+        "date": 7
+      },
+      {
+        "name": "大暑",
+        "date": 23
+      }
+    ],
+    "keywords": [
+      "暑假,夏日,海边,避暑"
+    ]
+  },
+  "2026-8": {
+    "year": 2026,
+    "month": 8,
+    "holidays": [
+      {
+        "name": "建军节",
+        "date": 1,
+        "important": true
+      },
+      {
+        "name": "中国人民解放军建军节",
+        "date": 1,
+        "important": true
+      },
+      {
+        "name": "国际青年节",
+        "date": 12,
+        "important": true
+      },
+      {
+        "name": "七夕节",
+        "date": 19,
+        "important": true
+      },
+      {
+        "name": "中国情人节",
+        "date": 19,
+        "important": true
+      },
+      {
+        "name": "七夕节",
+        "date": 20,
+        "important": true
+      }
+    ],
+    "solarTerms": [
+      {
+        "name": "立秋",
+        "date": 7
+      },
+      {
+        "name": "处暑",
+        "date": 23
+      }
+    ],
+    "keywords": [
+      "牛郎织女,爱情,浪漫,约会,情侣",
+      "夏末,返校,军训,开学"
+    ]
+  },
+  "2026-9": {
+    "year": 2026,
+    "month": 9,
+    "holidays": [
+      {
+        "name": "教师节",
+        "date": 10,
+        "important": true
+      },
+      {
+        "name": "中国教师节",
+        "date": 10,
+        "important": true
+      },
+      {
+        "name": "音乐情人节",
+        "date": 14,
+        "important": true
+      },
+      {
+        "name": "中秋节",
+        "date": 25,
+        "important": true
+      }
+    ],
+    "solarTerms": [
+      {
+        "name": "白露",
+        "date": 7
+      },
+      {
+        "name": "秋分",
+        "date": 23
+      }
+    ],
+    "keywords": [
+      "老师,感恩,教育,园丁,传道授业",
+      "月饼,赏月,团圆,嫦娥,思念",
+      "秋天,教师,开学,中秋"
+    ]
+  }
+}

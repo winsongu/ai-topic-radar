@@ -1,0 +1,3609 @@
+[
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 1,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "国庆节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "中华人民共和国国庆节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "国际音乐日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际老年人日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 2,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "国际非暴力日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界农场动物日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 3,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "世界建筑日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "德国统一日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 4,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "世界动物日",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "世界空间周开始",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 5,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "世界教师日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 6,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "国际建筑日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界人居日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "老人节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "中秋节",
+        "category": "lunar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 7,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界住房日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 8,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "寒露",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "寒露",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界视觉日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "全国高血压日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 9,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "世界邮政日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 10,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "辛亥革命纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界精神卫生日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界镇痛日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 11,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "世界镇痛日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际女童日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 12,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "世界关节炎日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界60亿人口日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 13,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "国际标准时间日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界保健日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "中国少年先锋队诞辰",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 14,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界标准日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际标准化组织成立纪念",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 15,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "国际盲人节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界农村妇女日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "全球洗手日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 16,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "世界粮食日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界脊柱日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 17,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "国际消除贫困日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界创伤日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 18,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "世界更年期关怀日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 20,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "世界统计日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界骨质疏松日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 21,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界传统医药日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 22,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "世界传统医药日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 23,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "霜降",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "霜降",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界雪豹日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 24,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "联合国日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界发展信息日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "程序员节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 25,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "抗美援朝纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界面食日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 26,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "环卫工人节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 27,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "世界音像遗产日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 28,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界男性健康日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 29,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "世界卒中日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "重阳节",
+        "category": "lunar",
+        "isHighProfile": true
+      },
+      {
+        "title": "老人节",
+        "category": "lunar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 30,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "世界勤俭日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 10,
+    "date": 31,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "万圣节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "世界城市日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界勤俭日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 1,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "万圣节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 5,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "世界海啸日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 7,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "立冬",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "立冬",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "十月革命纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 8,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "中国记者节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界城市规划日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 9,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "全国消防日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "吉尼斯世界纪录日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 10,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "世界青年日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 11,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "光棍节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "双十一购物节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "空军建军节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "国际科学与和平周",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 12,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "中国银行业服务日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 14,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "世界糖尿病日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "电影情人节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 16,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "国际宽容日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 17,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "国际大学生节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界学生日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 19,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "世界厕所日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 20,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "世界儿童日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "非洲工业化日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "寒衣节",
+        "category": "lunar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 21,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "世界电视日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界问候日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 22,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "小雪",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "小雪",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 25,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "国际消除对妇女暴力日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 27,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "感恩节",
+        "category": "international",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 11,
+    "date": 29,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "国际声援巴勒斯坦人民日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 1,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "世界艾滋病日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 2,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "全国交通安全日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 3,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "国际残疾人日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界残疾人日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 4,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "全国法制宣传日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "中国法制宣传日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "下元节",
+        "category": "lunar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 5,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "国际志愿者日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界土壤日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 7,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "大雪",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "大雪",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际民航日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 9,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界足球日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际反腐败日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "一二九运动纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 10,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "世界人权日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 11,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "国际山岳日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 12,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "双十二购物节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "西安事变纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 13,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "南京大屠杀死难者国家公祭日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 14,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "拥抱情人节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 15,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "世界强化免疫日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 18,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "国际移徙者日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 19,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "联合国南南合作日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 20,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "澳门回归纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际人类团结日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 21,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "冬至",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "冬至",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际篮球日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 22,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "冬至",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 24,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "平安夜",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 25,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "圣诞节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "date": 26,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "毛泽东诞辰纪念日 (1893)",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 1,
+    "date": 1,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "元旦",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "世界和平日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 1,
+    "date": 4,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "世界盲文日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 1,
+    "date": 5,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "小寒",
+        "category": "weather",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 1,
+    "date": 6,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "中国13亿人口日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 1,
+    "date": 8,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "周恩来逝世纪念日 (1976)",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 1,
+    "date": 10,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "中国110宣传日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "中国人民警察节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 1,
+    "date": 20,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "大寒",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "大寒",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 1,
+    "date": 21,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "国际拥抱日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 1,
+    "date": 26,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "国际海关日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "腊八节",
+        "category": "lunar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 1,
+    "date": 27,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "国际大屠杀纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 2,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "世界湿地日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 4,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "立春",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界抗癌日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 7,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "京汉铁路罢工纪念日 (1923)",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 10,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "国际气象节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "小年（北方）",
+        "category": "lunar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 11,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "小年（南方）",
+        "category": "lunar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 14,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "情人节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 16,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "除夕",
+        "category": "lunar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 17,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "春节",
+        "category": "lunar",
+        "isHighProfile": true
+      },
+      {
+        "title": "农历新年",
+        "category": "lunar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 18,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "雨水",
+        "category": "weather",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 19,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "邓小平逝世纪念日 (1997)",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 21,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "国际母语日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 24,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "第三世界青年日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 2,
+    "date": 28,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "世界居住条件调查日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 1,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "国际海豹日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 3,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "全国爱耳日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界野生动植物日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "元宵节",
+        "category": "lunar",
+        "isHighProfile": true
+      },
+      {
+        "title": "上元节",
+        "category": "lunar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 5,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "惊蛰",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "学雷锋日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "中国青年志愿者服务日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 6,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "世界青光眼日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 7,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "女生节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 8,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "妇女节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "国际劳动妇女节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 9,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "保护母亲河日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 12,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "植树节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "中国植树节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 14,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "白色情人节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际警察日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 15,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "消费者权益日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际消费者权益日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 17,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "中国国医节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "爱尔兰圣帕特里克节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 18,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "全国科技人才活动日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 20,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "春分",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际幸福日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "龙抬头",
+        "category": "lunar",
+        "isHighProfile": false
+      },
+      {
+        "title": "春龙节",
+        "category": "lunar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 21,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "世界森林日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界睡眠日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界儿歌日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 22,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "世界水日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 23,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "世界气象日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 3,
+    "date": 24,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界防治结核病日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 1,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "愚人节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际爱鸟日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 2,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "国际儿童图书日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界自闭症日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 4,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "寒食节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 5,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "清明",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "清明节",
+        "category": "lunar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 7,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界卫生日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "反思卢旺达大屠杀国际日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 8,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "国际珍稀动物保护日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 11,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "世界帕金森病日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 12,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "世界航天日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 14,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "黑色情人节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 15,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "全民国家安全教育日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 16,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "世界噪音日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 18,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "国际古迹遗址日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 20,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "谷雨",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "谷雨",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "联合国中文日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 21,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "企业家日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 22,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "世界地球日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界法律日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 23,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "世界读书日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界图书和版权日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 24,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "中国航天日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界青年反对殖民主义日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 25,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "儿童预防接种宣传日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界防治疟疾日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 26,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "世界知识产权日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 28,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界安全生产与健康日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 4,
+    "date": 30,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "全国交通安全反思日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 1,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "劳动节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "国际劳动节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 3,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "世界新闻自由日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 4,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "青年节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "五四青年节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "科技传播日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 5,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "立夏",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "全国碘缺乏病防治日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 8,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "世界红十字日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界微笑日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 9,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "战胜德国法西斯纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 10,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "母亲节",
+        "category": "international",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 11,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "世界防治肥胖日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 12,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "护士节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际护士节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "全国防灾减灾日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 15,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "国际家庭日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 17,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "世界电信日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界高血压日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 18,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "国际博物馆日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 19,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "中国旅游日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 20,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "网络情人节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "520",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "全国学生营养日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 21,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "小满",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际茶日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界文化多样性日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 22,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "国际生物多样性日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 25,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "非洲解放日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "525大学生心理健康日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 26,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界向人体条件挑战日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 29,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "国际维和人员日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 30,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "全国科技工作者日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 5,
+    "date": 31,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "世界无烟日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 1,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "儿童节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "国际儿童节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 3,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "世界自行车日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 5,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "芒种",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界环境日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 6,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "全国爱眼日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "芒种",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 8,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "世界海洋日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 9,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "中国文化和自然遗产日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 11,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "中国人口日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 12,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "世界无童工日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 13,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "全国低碳日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 14,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "世界献血者日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 15,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "全国老年维权日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 16,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "国际非洲儿童日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 17,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "世界防治荒漠化和干旱日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 18,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "618购物节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 19,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "端午节",
+        "category": "lunar",
+        "isHighProfile": true
+      },
+      {
+        "title": "端阳节",
+        "category": "lunar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 20,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "世界难民日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 21,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "夏至",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际瑜伽日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "夏至",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "父亲节",
+        "category": "international",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 23,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "国际奥林匹克日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界手球日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 25,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "全国土地日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 26,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "国际禁毒日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "联合国宪章日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 29,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "全国科普行动日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 6,
+    "date": 30,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界青年联欢节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 7,
+    "date": 1,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "建党节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "中国共产党诞生日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "香港回归纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 7,
+    "date": 2,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "国际体育记者日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 7,
+    "date": 6,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "国际接吻日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 7,
+    "date": 7,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "小暑",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "中国人民抗日战争纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界过敏性疾病日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 7,
+    "date": 8,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "世界过敏性疾病日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 7,
+    "date": 11,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "世界人口日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "中国航海日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 7,
+    "date": 14,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "银色情人节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 7,
+    "date": 18,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "曼德拉国际日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 7,
+    "date": 20,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "人类月球日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 7,
+    "date": 23,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "大暑",
+        "category": "weather",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 7,
+    "date": 28,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界肝炎日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 7,
+    "date": 30,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "国际友谊日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 1,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "建军节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "中国人民解放军建军节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 3,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "男人节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 5,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "恩格斯逝世纪念日 (1895)",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 6,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "国际电影节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 7,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "立秋",
+        "category": "weather",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 8,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "全民健身日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "爸爸节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "立秋",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 9,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "世界土著人民国际日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 12,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "国际青年节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 13,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "国际左撇子日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 14,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "绿色情人节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 15,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "日本投降日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "中元节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 19,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "中国医师节",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界人道主义日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "七夕节",
+        "category": "lunar",
+        "isHighProfile": true
+      },
+      {
+        "title": "中国情人节",
+        "category": "lunar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 20,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "七夕节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 22,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "邓小平诞辰纪念日 (1904)",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 23,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "处暑",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "处暑",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 26,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "全国律师咨询日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 27,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "中元节",
+        "category": "lunar",
+        "isHighProfile": false
+      },
+      {
+        "title": "鬼节",
+        "category": "lunar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 8,
+    "date": 29,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "全国测绘法宣传日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 3,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "抗日战争胜利纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "中国抗日战争胜利纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 5,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "中华慈善日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 7,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "白露",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "白露",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 8,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "国际扫盲日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界新闻工作者日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 9,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "毛泽东逝世纪念日 (1976)",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 10,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "教师节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "中国教师节",
+        "category": "solar",
+        "isHighProfile": true
+      },
+      {
+        "title": "世界预防自杀日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 14,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "世界清洁地球日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "音乐情人节",
+        "category": "solar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 15,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "国际民主日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 16,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "国际臭氧层保护日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "中国脑健康日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 17,
+    "weekday": "周四",
+    "events": [
+      {
+        "title": "世界骑行日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 18,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "九一八事变纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 20,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "全国爱牙日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "公民道德宣传日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 21,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "国际和平日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "世界老年痴呆日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 22,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界无车日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "秋分",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 23,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "秋分",
+        "category": "weather",
+        "isHighProfile": false
+      },
+      {
+        "title": "国际聋人节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 25,
+    "weekday": "周五",
+    "events": [
+      {
+        "title": "世界心脏日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "中秋节",
+        "category": "lunar",
+        "isHighProfile": true
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 26,
+    "weekday": "周六",
+    "events": [
+      {
+        "title": "世界避孕日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 27,
+    "weekday": "周日",
+    "events": [
+      {
+        "title": "世界旅游日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 28,
+    "weekday": "周一",
+    "events": [
+      {
+        "title": "国际聋人节",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 29,
+    "weekday": "周二",
+    "events": [
+      {
+        "title": "世界心脏日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "month": 9,
+    "date": 30,
+    "weekday": "周三",
+    "events": [
+      {
+        "title": "国际翻译日",
+        "category": "solar",
+        "isHighProfile": false
+      },
+      {
+        "title": "中国烈士纪念日",
+        "category": "solar",
+        "isHighProfile": false
+      }
+    ]
+  }
+]

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Search, ExternalLink, TrendingUp, Eye, Calendar } from "lucide-react"
+import { Search, ExternalLink, TrendingUp, Eye, Calendar, Lightbulb, Target, Palette } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Navigation } from "@/components/navigation"
@@ -542,6 +542,7 @@ export default function CompetitorDynamicsPage() {
   })
   const [showUsagePopover, setShowUsagePopover] = useState(false)
   const [previewTemplate, setPreviewTemplate] = useState<(typeof mockTemplates)[0] | null>(null)
+  const [showMobileInsights, setShowMobileInsights] = useState(false)
 
   const additionalUsages = allUsages.filter((usage) => !usages.includes(usage))
 
@@ -571,30 +572,34 @@ export default function CompetitorDynamicsPage() {
       
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="mb-2 text-3xl font-bold text-foreground">竞品动态</h1>
-          <p className="text-muted-foreground">实时追踪PPT模板市场动态，把握设计趋势</p>
+        <div className="mb-6">
+          <h1 className="mb-2 text-2xl font-bold text-foreground">竞品动态</h1>
+          <p className="text-sm text-muted-foreground">实时追踪PPT模板市场动态，把握设计趋势</p>
         </div>
 
+        <div className="flex gap-6">
+          {/* Main Content */}
+          <div className="flex-1 min-w-0">
+
         {/* Search and Filters */}
-        <div className="mb-8 rounded-2xl bg-card p-6 shadow-sm border">
+        <div className="mb-6 rounded-xl bg-card p-5 shadow-sm border">
           {/* Search Bar */}
-          <div className="mb-6">
+          <div className="mb-5">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <input
                 type="text"
                 placeholder="搜索模板标题、描述或标签..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-xl border border-border bg-background py-3 pl-12 pr-4 text-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="w-full rounded-lg border border-border bg-background py-2.5 pl-10 pr-4 text-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/20"
               />
             </div>
           </div>
 
           {/* Platform Filter */}
           <div className="mb-4">
-            <label className="mb-2 block text-sm font-medium text-foreground">平台:</label>
+            <label className="mb-2 block text-xs font-medium text-muted-foreground">平台:</label>
             <div className="flex flex-wrap gap-2">
               {platforms.map((platform) => (
                 <Button
@@ -602,7 +607,7 @@ export default function CompetitorDynamicsPage() {
                   variant={selectedPlatform === platform ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSelectedPlatform(platform)}
-                  className="rounded-full"
+                  className="rounded-full text-xs h-8"
                 >
                   {platform}
                 </Button>
@@ -612,7 +617,7 @@ export default function CompetitorDynamicsPage() {
 
           {/* Time Filter */}
           <div className="mb-4">
-            <label className="mb-2 block text-sm font-medium text-foreground">时间:</label>
+            <label className="mb-2 block text-xs font-medium text-muted-foreground">时间:</label>
             <div className="flex flex-wrap gap-2">
               {timeRanges.map((time) => (
                 <Button
@@ -620,15 +625,15 @@ export default function CompetitorDynamicsPage() {
                   variant={selectedTime === time ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSelectedTime(time)}
-                  className="rounded-full"
+                  className="rounded-full text-xs h-8"
                 >
                   {time}
                 </Button>
               ))}
               <Popover>
                 <PopoverTrigger asChild>
-                  <Button variant="outline" size="sm" className="gap-2 rounded-full">
-                    <Calendar className="h-4 w-4" />
+                  <Button variant="outline" size="sm" className="gap-2 rounded-full text-xs h-8">
+                    <Calendar className="h-3.5 w-3.5" />
                     自定义日期
                   </Button>
                 </PopoverTrigger>
@@ -655,7 +660,7 @@ export default function CompetitorDynamicsPage() {
 
           {/* Usage Filter */}
           <div>
-            <label className="mb-2 block text-sm font-medium text-foreground">用途:</label>
+            <label className="mb-2 block text-xs font-medium text-muted-foreground">用途:</label>
             <div className="flex flex-wrap gap-2">
               {usages.map((usage) => (
                 <Button
@@ -663,7 +668,7 @@ export default function CompetitorDynamicsPage() {
                   variant={selectedUsage === usage ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSelectedUsage(usage)}
-                  className="rounded-full"
+                  className="rounded-full text-xs h-8"
                 >
                   {usage}
                 </Button>
@@ -671,7 +676,7 @@ export default function CompetitorDynamicsPage() {
               {additionalUsages.length > 0 && (
                 <Popover open={showUsagePopover} onOpenChange={setShowUsagePopover}>
                   <PopoverTrigger asChild>
-                    <Button variant="ghost" size="sm" className="rounded-full text-primary">
+                    <Button variant="ghost" size="sm" className="rounded-full text-xs h-8 text-primary hover:text-primary">
                       更多
                     </Button>
                   </PopoverTrigger>
@@ -688,7 +693,7 @@ export default function CompetitorDynamicsPage() {
                               setSelectedUsage(usage)
                               setShowUsagePopover(false)
                             }}
-                            className="justify-start"
+                            className="justify-start text-xs"
                           >
                             {usage}
                           </Button>
@@ -702,26 +707,37 @@ export default function CompetitorDynamicsPage() {
           </div>
         </div>
 
+        {/* Mobile Insights Button */}
+        <div className="lg:hidden mb-4">
+          <Button
+            onClick={() => setShowMobileInsights(true)}
+            className="w-full gap-2"
+          >
+            <Lightbulb className="h-4 w-4" />
+            查看AI洞察与趋势分析
+          </Button>
+        </div>
+
         {/* Results Header */}
         <div className="mb-4 flex items-center justify-between">
-          <p className="text-sm text-muted-foreground">共找到 {filteredTemplates.length} 个模板</p>
-          <p className="text-sm text-blue-600 font-medium">最后更新: {formatChineseDateTime(new Date().toISOString())}</p>
+          <p className="text-xs text-muted-foreground">共找到 {filteredTemplates.length} 个模板</p>
+          <p className="text-xs text-blue-600 font-medium">最后更新: {formatChineseDateTime(new Date().toISOString())}</p>
         </div>
 
         {/* Results Grid - Optimized Card Layout */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {filteredTemplates.map((template) => (
             <div
               key={template.id}
-              className="group relative overflow-hidden rounded-2xl bg-card shadow-sm transition-all hover:shadow-md"
+              className="group relative overflow-hidden rounded-xl bg-card border shadow-sm transition-all hover:shadow-md"
               onMouseEnter={() => setHoveredId(template.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
-              <div className="flex gap-6 p-6">
-                {/* Thumbnail - Larger and more prominent */}
+              <div className="flex gap-5 p-5">
+                {/* Thumbnail */}
                 <div className="relative flex-shrink-0">
                   <div
-                    className="relative h-40 w-60 cursor-pointer overflow-hidden rounded-xl bg-muted"
+                    className="relative h-32 w-48 cursor-pointer overflow-hidden rounded-lg bg-muted"
                     onClick={() => setPreviewTemplate(template)}
                   >
                     <img
@@ -730,15 +746,15 @@ export default function CompetitorDynamicsPage() {
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     {template.isFree && (
-                      <div className="absolute left-3 top-3">
-                        <Badge className="bg-emerald-500 text-white shadow-md">Free</Badge>
+                      <div className="absolute left-2 top-2">
+                        <Badge className="bg-emerald-500 text-white text-xs">Free</Badge>
                       </div>
                     )}
                     {/* Hover overlay with preview button */}
                     {hoveredId === template.id && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity">
-                        <Button size="sm" variant="secondary" className="gap-2">
-                          <Eye className="h-4 w-4" />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm transition-opacity">
+                        <Button size="sm" variant="secondary" className="gap-1.5 h-8 text-xs">
+                          <Eye className="h-3.5 w-3.5" />
                           预览
                         </Button>
                       </div>
@@ -747,15 +763,15 @@ export default function CompetitorDynamicsPage() {
                 </div>
 
                 {/* Content - Better organized information */}
-                <div className="flex flex-1 flex-col justify-between">
+                <div className="flex flex-1 flex-col justify-between min-w-0">
                   {/* Title and metadata */}
                   <div>
-                    <div className="mb-3 flex items-start justify-between">
-                      <div className="flex-1">
-                        <h3 className="mb-2 text-lg font-semibold leading-tight text-foreground group-hover:text-primary">
+                    <div className="mb-2.5 flex items-start justify-between">
+                      <div className="flex-1 min-w-0 pr-2">
+                        <h3 className="mb-1.5 text-base font-semibold leading-snug text-foreground group-hover:text-primary line-clamp-2">
                           {template.title}
                         </h3>
-                        <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
                           <span>{template.type}</span>
                           <span>•</span>
                           <span>{template.format}</span>
@@ -765,58 +781,203 @@ export default function CompetitorDynamicsPage() {
                         href={template.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                        className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground flex-shrink-0"
                       >
-                        <ExternalLink className="h-5 w-5" />
+                        <ExternalLink className="h-4 w-4" />
                       </a>
                     </div>
 
                     {/* Tags - More prominent and organized */}
-                    <div className="space-y-2">
+                    <div className="space-y-1.5">
                       {/* Usage - Primary category with distinct styling */}
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-medium text-muted-foreground">用途:</span>
-                        <Badge className="bg-blue-500/10 text-blue-700 hover:bg-blue-500/20">{template.usage}</Badge>
+                        <span className="text-xs text-muted-foreground">用途:</span>
+                        <Badge className="bg-blue-50 text-blue-700 border-blue-200 text-xs">{template.usage}</Badge>
                       </div>
 
                       {/* Platform - Secondary info with different styling */}
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-medium text-muted-foreground">平台:</span>
-                        <Badge variant="outline" className="border-gray-300 bg-gray-50 text-gray-700">
+                        <span className="text-xs text-muted-foreground">平台:</span>
+                        <Badge variant="outline" className="border-border bg-muted/50 text-foreground text-xs">
                           {template.platform}
                         </Badge>
                       </div>
 
                       {/* Tags - Tertiary info with subtle styling */}
                       <div className="flex items-start gap-2">
-                        <span className="mt-1 text-xs font-medium text-muted-foreground">标签:</span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {template.tags.map((tag) => (
+                        <span className="mt-0.5 text-xs text-muted-foreground">标签:</span>
+                        <div className="flex flex-wrap gap-1">
+                          {template.tags.slice(0, 5).map((tag) => (
                             <Badge
                               key={tag}
                               variant="secondary"
-                              className="bg-muted/50 text-xs text-muted-foreground hover:bg-muted"
+                              className="bg-muted/50 text-xs text-muted-foreground hover:bg-muted border-0"
                             >
                               {tag}
                             </Badge>
                           ))}
+                          {template.tags.length > 5 && (
+                            <Badge variant="secondary" className="bg-muted/50 text-xs text-muted-foreground border-0">
+                              +{template.tags.length - 5}
+                            </Badge>
+                          )}
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Footer - Date and actions */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">{template.date}</span>
-                    <div className="flex gap-2"></div>
+                  {/* Footer - Date */}
+                  <div className="flex items-center justify-between mt-2">
+                    <span className="text-xs text-muted-foreground">{template.date}</span>
                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="hidden lg:block w-80 flex-shrink-0">
+            <div className="sticky top-8 space-y-6">
+              {/* AI Insights Card */}
+              <div className="rounded-2xl border border-border/40 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 shadow-sm dark:from-blue-950/20 dark:to-indigo-950/20">
+                <div className="mb-6 flex items-center gap-2">
+                  <Lightbulb className="h-5 w-5 text-blue-600" />
+                  <h3 className="text-lg font-bold text-foreground">AI 洞察</h3>
+                </div>
+
+                {/* Hot Trends */}
+                <div className="mb-6">
+                  <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground">
+                    <TrendingUp className="h-4 w-4 text-orange-500" />
+                    热门趋势
+                  </h4>
+                  <div className="space-y-2">
+                    <div className="rounded-lg bg-white/60 p-3 dark:bg-gray-900/40">
+                      <p className="mb-1 text-sm font-medium text-orange-600">国庆主题模板</p>
+                      <p className="text-xs text-muted-foreground">近7天上传量增长 156%，建议关注红色国潮风格</p>
+                    </div>
+                    <div className="rounded-lg bg-white/60 p-3 dark:bg-gray-900/40">
+                      <p className="mb-1 text-sm font-medium text-blue-600">科技芯片主题</p>
+                      <p className="text-xs text-muted-foreground">热度持续上升，绿色科技风格受欢迎</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Popular Categories */}
+                <div className="mb-6">
+                  <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground">
+                    <Target className="h-4 w-4 text-green-500" />
+                    热门类别
+                  </h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-foreground">总结汇报</span>
+                      <Badge className="bg-green-500/10 text-green-700">高需求</Badge>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-foreground">营销策划</span>
+                      <Badge className="bg-blue-500/10 text-blue-700">中需求</Badge>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-foreground">产品发布</span>
+                      <Badge className="bg-orange-500/10 text-orange-700">上升中</Badge>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Design Styles */}
+                <div className="mb-6">
+                  <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground">
+                    <Palette className="h-4 w-4 text-purple-500" />
+                    流行风格
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="secondary" className="bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300">
+                      国潮风
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300"
+                    >
+                      科技风
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-pink-100 text-pink-700 dark:bg-pink-950 dark:text-pink-300"
+                    >
+                      手绘风
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+                    >
+                      简约商务
+                    </Badge>
+                  </div>
+                </div>
+
+                {/* Quick Tips */}
+                <div className="rounded-lg bg-gradient-to-r from-amber-50 to-orange-50 p-4 dark:from-amber-950/30 dark:to-orange-950/30">
+                  <p className="mb-2 text-sm font-semibold text-foreground">💡 运营建议</p>
+                  <ul className="space-y-1.5 text-xs text-muted-foreground">
+                    <li>• 关注节日主题模板，提前2周布局</li>
+                    <li>• 科技类模板保持简洁专业风格</li>
+                    <li>• 手绘风格适合教育和创意类场景</li>
+                    <li>• 国潮风格在政务和企业汇报中受欢迎</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Platform Stats Card */}
+              <div className="rounded-2xl border border-border/40 bg-card p-6 shadow-sm">
+                <h3 className="mb-4 text-sm font-bold text-foreground">平台活跃度</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">iSlide</span>
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-24 overflow-hidden rounded-full bg-muted">
+                        <div className="h-full w-[85%] bg-blue-500"></div>
+                      </div>
+                      <span className="text-xs text-muted-foreground">85%</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">AI PPT</span>
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-24 overflow-hidden rounded-full bg-muted">
+                        <div className="h-full w-[72%] bg-green-500"></div>
+                      </div>
+                      <span className="text-xs text-muted-foreground">72%</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">熊猫办公</span>
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-24 overflow-hidden rounded-full bg-muted">
+                        <div className="h-full w-[68%] bg-purple-500"></div>
+                      </div>
+                      <span className="text-xs text-muted-foreground">68%</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">Canva</span>
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-24 overflow-hidden rounded-full bg-muted">
+                        <div className="h-full w-[55%] bg-orange-500"></div>
+                      </div>
+                      <span className="text-xs text-muted-foreground">55%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
+      {/* Template Preview Dialog */}
       <Dialog open={!!previewTemplate} onOpenChange={() => setPreviewTemplate(null)}>
         <DialogContent className="max-w-4xl">
           <DialogHeader>
@@ -887,6 +1048,144 @@ export default function CompetitorDynamicsPage() {
               </div>
             </div>
           )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Mobile Insights Dialog */}
+      <Dialog open={showMobileInsights} onOpenChange={setShowMobileInsights}>
+        <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Lightbulb className="h-5 w-5 text-blue-600" />
+              AI洞察与趋势分析
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6 mt-4">
+            {/* Hot Trends */}
+            <div>
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground">
+                <TrendingUp className="h-4 w-4 text-orange-500" />
+                热门趋势
+              </h4>
+              <div className="space-y-2">
+                <div className="rounded-lg bg-white/60 p-3 dark:bg-gray-900/40">
+                  <p className="mb-1 text-sm font-medium text-orange-600">国庆主题模板</p>
+                  <p className="text-xs text-muted-foreground">近7天上传量增长 156%，建议关注红色国潮风格</p>
+                </div>
+                <div className="rounded-lg bg-white/60 p-3 dark:bg-gray-900/40">
+                  <p className="mb-1 text-sm font-medium text-blue-600">科技芯片主题</p>
+                  <p className="text-xs text-muted-foreground">热度持续上升，绿色科技风格受欢迎</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Popular Categories */}
+            <div>
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground">
+                <Target className="h-4 w-4 text-green-500" />
+                热门类别
+              </h4>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-foreground">总结汇报</span>
+                  <Badge className="bg-green-500/10 text-green-700">高需求</Badge>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-foreground">营销策划</span>
+                  <Badge className="bg-blue-500/10 text-blue-700">中需求</Badge>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-foreground">产品发布</span>
+                  <Badge className="bg-orange-500/10 text-orange-700">上升中</Badge>
+                </div>
+              </div>
+            </div>
+
+            {/* Design Styles */}
+            <div>
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground">
+                <Palette className="h-4 w-4 text-purple-500" />
+                流行风格
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="secondary" className="bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300">
+                  国潮风
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300"
+                >
+                  科技风
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="bg-pink-100 text-pink-700 dark:bg-pink-950 dark:text-pink-300"
+                >
+                  手绘风
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+                >
+                  简约商务
+                </Badge>
+              </div>
+            </div>
+
+            {/* Quick Tips */}
+            <div className="rounded-lg bg-gradient-to-r from-amber-50 to-orange-50 p-4 dark:from-amber-950/30 dark:to-orange-950/30">
+              <p className="mb-2 text-sm font-semibold text-foreground">💡 运营建议</p>
+              <ul className="space-y-1.5 text-xs text-muted-foreground">
+                <li>• 关注节日主题模板，提前2周布局</li>
+                <li>• 科技类模板保持简洁专业风格</li>
+                <li>• 手绘风格适合教育和创意类场景</li>
+                <li>• 国潮风格在政务和企业汇报中受欢迎</li>
+              </ul>
+            </div>
+
+            {/* Platform Stats */}
+            <div>
+              <h4 className="mb-3 text-sm font-semibold text-foreground">平台活跃度</h4>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">iSlide</span>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-24 overflow-hidden rounded-full bg-muted">
+                      <div className="h-full w-[85%] bg-blue-500"></div>
+                    </div>
+                    <span className="text-xs text-muted-foreground">85%</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">AI PPT</span>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-24 overflow-hidden rounded-full bg-muted">
+                      <div className="h-full w-[72%] bg-green-500"></div>
+                    </div>
+                    <span className="text-xs text-muted-foreground">72%</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">熊猫办公</span>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-24 overflow-hidden rounded-full bg-muted">
+                      <div className="h-full w-[68%] bg-purple-500"></div>
+                    </div>
+                    <span className="text-xs text-muted-foreground">68%</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">Canva</span>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-24 overflow-hidden rounded-full bg-muted">
+                      <div className="h-full w-[55%] bg-orange-500"></div>
+                    </div>
+                    <span className="text-xs text-muted-foreground">55%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </DialogContent>
       </Dialog>
     </div>

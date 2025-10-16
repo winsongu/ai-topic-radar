@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Navigation } from "@/components/navigation"
 import { PlatformCard } from "@/components/platform-card"
 import { NewsModal } from "@/components/news-modal"
+import { Toast } from "@/components/ui/toast"
 import { useRouter } from "next/navigation"
 
 // 虚拟数据 - 36氪、今日头条、抖音热榜
@@ -76,6 +77,8 @@ export default function HomePage() {
   const [refreshing, setRefreshing] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedPlatform, setSelectedPlatform] = useState<any>(null)
+  const [showToast, setShowToast] = useState(false)
+  const [isUpdating, setIsUpdating] = useState(false)
   const router = useRouter()
 
   // 从API获取真实数据（前3个平台）+ 虚拟数据（后3个平台）
@@ -118,7 +121,14 @@ export default function HomePage() {
 
   // 手动刷新数据
   const handleRefresh = () => {
-    fetchData(true)
+    // 开始转圈动画
+    setIsUpdating(true)
+    
+    // 转圈动画持续1秒后显示Toast
+    setTimeout(() => {
+      setIsUpdating(false)
+      setShowToast(true)
+    }, 1000)
   }
 
   useEffect(() => {
@@ -227,11 +237,11 @@ export default function HomePage() {
             variant="outline"
             size="sm"
             onClick={handleRefresh}
-            disabled={refreshing || loading}
+            disabled={isUpdating || showToast || loading}
             className="flex items-center gap-2"
           >
-            <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
-            {refreshing ? '更新中...' : '更新数据'}
+            <RefreshCw className={`h-4 w-4 ${isUpdating ? 'animate-spin' : ''}`} />
+            {isUpdating ? '更新中...' : '更新数据'}
           </Button>
         </div>
 
@@ -244,6 +254,15 @@ export default function HomePage() {
 
       {/* News Modal */}
       {selectedPlatform && <NewsModal platform={selectedPlatform} onClose={() => setSelectedPlatform(null)} />}
+
+      {/* Toast 提示 */}
+      {showToast && (
+        <Toast
+          message="已执行、请5分钟后刷新"
+          onClose={() => setShowToast(false)}
+          duration={5000}
+        />
+      )}
     </div>
   )
 }
