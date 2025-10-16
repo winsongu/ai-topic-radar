@@ -3,6 +3,9 @@
  * 用于本地测试定时任务是否正常工作
  */
 
+// 加载环境变量
+require('dotenv').config({ path: '.env.local' });
+
 const { dailyUpdate } = require('./crawl-and-save-daily.js');
 
 console.log('🧪 开始测试数据更新流程...\n');

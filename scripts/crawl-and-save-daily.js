@@ -10,22 +10,27 @@ const path = require('path')
 // 引入爬虫脚本
 const { crawlPlatform } = require('./news-crawler.js')
 
-// Supabase配置
-const SUPABASE_URL = 'https://sdxgocjszjnrqrfbsspn.supabase.co'
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkeGdvY2pzempucnFyZmJzc3BuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5OTM4NjgsImV4cCI6MjA3NTU2OTg2OH0.8lJ8dCBTT3qwmwNdL71EMPcVAmZHAgBeEp3rr-X6GJU'
+// Supabase配置（优先使用环境变量）
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://sdxgocjszjnrqrfbsspn.supabase.co'
+const SUPABASE_KEY = process.env.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkeGdvY2pzempucnFyZmJzc3BuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5OTM4NjgsImV4cCI6MjA3NTU2OTg2OH0.8lJ8dCBTT3qwmwNdL71EMPcVAmZHAgBeEp3rr-X6GJU'
+
+// Firecrawl API Key（从环境变量读取）
+// 注意：FIRECRAWL_API_KEY 需要在 GitHub Secrets 中配置
+const FIRECRAWL_API_KEY = process.env.FIRECRAWL_API_KEY || ''
+if (!FIRECRAWL_API_KEY) {
+  console.warn('⚠️  警告：FIRECRAWL_API_KEY 未配置，前三个平台（百度、中新网、人民网）可能无法抓取')
+}
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
-// 数据源配置
+// 数据源配置 - 按照前端显示顺序
 const dataSources = [
   { id: 'baidu', name: '百度热搜' },
+  { id: 'chinanews', name: '中新网教育' },
+  { id: 'people', name: '人民网重要讲话' },
   { id: '36kr', name: '36氪' },
-  { id: 'toutiao', name: '今日头条' },
-  { id: 'douyin', name: '抖音热榜' },
   { id: 'weibo', name: '微博热搜' },
-  { id: 'zhihu', name: '知乎热榜' },
-  { id: 'bilibili', name: 'B站热门' },
-  { id: 'xiaohongshu', name: '小红书' }
+  { id: 'zhihu', name: '知乎热榜' }
 ]
 
 /**

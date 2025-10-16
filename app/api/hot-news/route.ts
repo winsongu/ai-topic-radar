@@ -24,21 +24,29 @@ export async function GET() {
       })
     }
 
-    // 1. 获取所有激活的平台
+    // 1. 定义6个平台的顺序
+    const platformOrder = ['baidu', 'chinanews', 'people', '36kr', 'weibo', 'zhihu']
+    
+    // 2. 获取指定的6个平台
     const { data: platforms, error: platformError } = await supabase
       .from('platforms')
       .select('*')
+      .in('id', platformOrder)
       .eq('is_active', true)
-      .order('id')
     
     if (platformError) {
       console.error('Error fetching platforms:', platformError)
       throw platformError
     }
     
-    // 2. 为每个平台获取最新的Top10新闻
+    // 3. 按照 platformOrder 的顺序排序
+    const orderedPlatforms = platformOrder
+      .map(id => platforms.find(p => p.id === id))
+      .filter(Boolean)
+    
+    // 4. 为每个平台获取最新的Top10新闻
     const platformsWithNews = await Promise.all(
-      platforms.map(async (platform) => {
+      orderedPlatforms.map(async (platform: any) => {
         // 获取该平台的最新热点（按 rank_order 排序，取Top10）
         const { data: news, error: newsError } = await supabase
           .from('hot_news')
@@ -54,18 +62,23 @@ export async function GET() {
             id: platform.id,
             name: platform.name,
             description: platform.description,
-            updateTime: new Date().toISOString().split('T')[0] + ' 00:00',
+            updateTime: new Date().toISOString(),
             color: platform.color,
             news: []
           }
         }
         
-        // 3. 格式化数据，匹配前端期望的结构
+        // 5. 获取该平台最新的抓取时间
+        const latestCrawledAt = news.length > 0 && news[0].crawled_at
+          ? new Date(news[0].crawled_at).toISOString()
+          : new Date().toISOString()
+        
+        // 6. 格式化数据，匹配前端期望的结构
         return {
           id: platform.id,
           name: platform.name,
           description: platform.description,
-          updateTime: new Date().toISOString().split('T')[0] + ' 00:00',
+          updateTime: latestCrawledAt,  // 使用真实的抓取时间
           color: platform.color,
           news: news.map(item => ({
             id: item.rank_order,  // 使用rank_order作为前端的id
