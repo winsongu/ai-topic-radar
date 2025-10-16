@@ -127,3 +127,6 @@ temp/
 *.njsproj
 *.sln
 *.sw?
+
+# Local test projects
+wps-news-aggregator/
