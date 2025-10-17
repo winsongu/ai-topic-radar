@@ -12,7 +12,13 @@ export function cn(...inputs: ClassValue[]) {
  */
 export function formatChineseDateTime(dateString: string): string {
   try {
-    const date = new Date(dateString)
+    // 如果时间字符串包含 'T' 但没有时区标识符，添加 'Z' 表示UTC时间
+    let normalizedDateString = dateString
+    if (dateString.includes('T') && !dateString.includes('Z') && !dateString.includes('+') && !dateString.includes('-', 10)) {
+      normalizedDateString = dateString + 'Z'
+    }
+    
+    const date = new Date(normalizedDateString)
     const month = date.getMonth() + 1
     const day = date.getDate()
     const hours = String(date.getHours()).padStart(2, '0')
