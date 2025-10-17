@@ -3,6 +3,9 @@
  * 每天0点自动执行：抓取数据 → 保存到Supabase → 更新前端
  */
 
+// 本地开发时加载环境变量
+require('dotenv').config({ path: '.env.local' })
+
 const { createClient } = require('@supabase/supabase-js')
 const fs = require('fs').promises
 const path = require('path')
