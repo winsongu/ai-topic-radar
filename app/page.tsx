@@ -1,13 +1,12 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, RefreshCw } from "lucide-react"
+import { Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Navigation } from "@/components/navigation"
 import { PlatformCard } from "@/components/platform-card"
 import { NewsModal } from "@/components/news-modal"
-import { Toast } from "@/components/ui/toast"
 import { useRouter } from "next/navigation"
 
 // 虚拟数据 - 36氪、今日头条、抖音热榜
@@ -77,8 +76,6 @@ export default function HomePage() {
   const [refreshing, setRefreshing] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedPlatform, setSelectedPlatform] = useState<any>(null)
-  const [showToast, setShowToast] = useState(false)
-  const [isUpdating, setIsUpdating] = useState(false)
   const router = useRouter()
 
   // 从API获取真实数据（前3个平台）+ 虚拟数据（后3个平台）
@@ -119,21 +116,9 @@ export default function HomePage() {
     }
   }
 
-  // 手动刷新数据
-  const handleRefresh = () => {
-    // 开始转圈动画
-    setIsUpdating(true)
-    
-    // 转圈动画持续1秒后显示Toast
-    setTimeout(() => {
-      setIsUpdating(false)
-      setShowToast(true)
-    }, 1000)
-  }
-
   useEffect(() => {
     fetchData()
-    // 移除自动刷新，改为每天0点更新策略
+    // 数据由定时任务自动更新（每天8:00和13:30）
   }, [])
 
   const filteredPlatforms = platforms.filter(
@@ -231,18 +216,8 @@ export default function HomePage() {
 
       {/* Platforms Grid */}
       <section id="platforms-section" className="container mx-auto px-4 py-12">
-        <div className="mb-8 flex items-center gap-4">
+        <div className="mb-8">
           <h3 className="text-2xl font-bold text-foreground">精选平台</h3>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleRefresh}
-            disabled={isUpdating || showToast || loading}
-            className="flex items-center gap-2"
-          >
-            <RefreshCw className={`h-4 w-4 ${isUpdating ? 'animate-spin' : ''}`} />
-            {isUpdating ? '更新中...' : '更新数据'}
-          </Button>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -254,15 +229,6 @@ export default function HomePage() {
 
       {/* News Modal */}
       {selectedPlatform && <NewsModal platform={selectedPlatform} onClose={() => setSelectedPlatform(null)} />}
-
-      {/* Toast 提示 */}
-      {showToast && (
-        <Toast
-          message="已执行、请5分钟后刷新"
-          onClose={() => setShowToast(false)}
-          duration={5000}
-        />
-      )}
     </div>
   )
 }
