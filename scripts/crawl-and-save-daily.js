@@ -37,6 +37,39 @@ const dataSources = [
 ]
 
 /**
+ * 清理N天前的旧数据（避免数据库无限增长）
+ * @param {number} daysToKeep - 保留最近N天的数据（默认90天）
+ */
+async function cleanOldData(daysToKeep = 90) {
+  console.log(`\n🧹 清理 ${daysToKeep} 天前的旧数据...`)
+  
+  try {
+    const cutoffDate = new Date()
+    cutoffDate.setDate(cutoffDate.getDate() - daysToKeep)
+    const cutoffISO = cutoffDate.toISOString()
+    
+    const { data, error } = await supabase
+      .from('hot_news')
+      .delete()
+      .lt('crawled_at', cutoffISO)
+      .select()
+    
+    if (error) {
+      console.log(`   ⚠️  清理失败: ${error.message}`)
+      return { success: false, deleted: 0 }
+    }
+    
+    const deletedCount = data?.length || 0
+    console.log(`   ✅ 已清理 ${deletedCount} 条旧数据（早于 ${cutoffDate.toLocaleDateString('zh-CN')}）`)
+    return { success: true, deleted: deletedCount }
+    
+  } catch (error) {
+    console.error(`   ❌ 清理数据失败:`, error.message)
+    return { success: false, deleted: 0 }
+  }
+}
+
+/**
  * 完整的每日更新流程
  */
 async function dailyUpdate() {
@@ -63,21 +96,13 @@ async function dailyUpdate() {
       
       console.log(`   ✅ 抓取成功，获得 ${result.data.length} 条新闻`)
       
-      // 2. 清理旧数据
-      console.log(`   🗑️  清理 ${source.id} 的旧数据...`)
+      // 2. 【追加模式】直接插入新数据，保留历史记录
+      // 每次抓取使用统一的时间戳，便于后续查询最新批次
+      const batchTimestamp = new Date().toISOString()
       
-      const { error: deleteError } = await supabase
-        .from('hot_news')
-        .delete()
-        .eq('platform_id', source.id)
+      console.log(`   💾 追加新数据（批次时间: ${batchTimestamp}）...`)
       
-      if (deleteError) {
-        console.log(`   ⚠️  清理失败: ${deleteError.message}`)
-      } else {
-        console.log(`   ✅ 旧数据已清理`)
-      }
-      
-      // 3. 插入新数据
+      // 3. 插入新数据（使用统一的批次时间戳）
       const newsToInsert = result.data.map(item => ({
         platform_id: source.id,
         title: item.title,
@@ -86,7 +111,7 @@ async function dailyUpdate() {
         hot_value: item.hot || 0,
         time_label: item.time,
         rank_order: item.id,
-        crawled_at: new Date().toISOString(),
+        crawled_at: batchTimestamp,  // 使用统一的批次时间
         is_visible: true
       }))
       
@@ -108,8 +133,12 @@ async function dailyUpdate() {
       await new Promise(resolve => setTimeout(resolve, 2000))
     }
     
-    // 4. 更新平台状态
-    console.log('\n🔄 第二步：更新平台状态...')
+    // 4. 清理旧数据（保留90天）
+    console.log('\n🧹 第二步：清理旧数据...')
+    const cleanResult = await cleanOldData(90)  // 保留90天数据
+    
+    // 5. 更新平台状态
+    console.log('\n🔄 第三步：更新平台状态...')
     const today = new Date().toISOString().split('T')[0] + ' 00:00'
     
     for (const source of dataSources) {
@@ -128,11 +157,12 @@ async function dailyUpdate() {
       }
     }
     
-    // 5. 保存执行日志
+    // 6. 保存执行日志
     const logEntry = {
       timestamp: new Date().toISOString(),
       totalProcessed,
       totalSuccess,
+      deletedOldData: cleanResult.deleted || 0,
       sources: dataSources.map(s => s.name),
       status: totalSuccess > 0 ? 'success' : 'failed'
     }
@@ -140,11 +170,12 @@ async function dailyUpdate() {
     const logFile = path.join(__dirname, 'daily-update.log')
     await fs.appendFile(logFile, JSON.stringify(logEntry) + '\n', 'utf-8')
     
-    // 6. 输出汇总
+    // 7. 输出汇总
     console.log('\n━'.repeat(60))
     console.log('📊 每日更新完成！')
     console.log('━'.repeat(60))
-    console.log(`✅ 成功处理: ${totalSuccess}/${totalProcessed} 条新闻`)
+    console.log(`✅ 新增数据: ${totalSuccess}/${totalProcessed} 条新闻`)
+    console.log(`🧹 清理数据: ${cleanResult.deleted || 0} 条旧数据`)
     console.log(`📅 更新时间: ${today}`)
     console.log(`📝 日志文件: daily-update.log`)
     console.log('━'.repeat(60))

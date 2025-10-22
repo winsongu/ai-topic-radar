@@ -47,11 +47,34 @@ export async function GET() {
     // 4. 为每个平台获取最新的Top10新闻
     const platformsWithNews = await Promise.all(
       orderedPlatforms.map(async (platform: any) => {
-        // 获取该平台的最新热点（按 rank_order 排序，取Top10）
+        // 4.1 先获取该平台最新的抓取时间（最新批次）
+        const { data: latestBatch, error: batchError } = await supabase
+          .from('hot_news')
+          .select('crawled_at')
+          .eq('platform_id', platform.id)
+          .order('crawled_at', { ascending: false })
+          .limit(1)
+        
+        if (batchError || !latestBatch || latestBatch.length === 0) {
+          console.error(`Error fetching latest batch for ${platform.id}:`, batchError)
+          return {
+            id: platform.id,
+            name: platform.name,
+            description: platform.description,
+            updateTime: new Date().toISOString(),
+            color: platform.color,
+            news: []
+          }
+        }
+        
+        const latestCrawledAt = latestBatch[0].crawled_at
+        
+        // 4.2 获取该批次的所有新闻（按 rank_order 排序，取Top10）
         const { data: news, error: newsError } = await supabase
           .from('hot_news')
           .select('*')
           .eq('platform_id', platform.id)
+          .eq('crawled_at', latestCrawledAt)  // 只查询最新批次
           .eq('is_visible', true)
           .order('rank_order', { ascending: true })
           .limit(10)
@@ -68,9 +91,9 @@ export async function GET() {
           }
         }
         
-        // 5. 获取该平台最新的抓取时间
-        const latestCrawledAt = news.length > 0 && news[0].crawled_at
-          ? new Date(news[0].crawled_at).toISOString()
+        // 5. 使用真实的最新抓取时间
+        const updateTime = latestCrawledAt 
+          ? new Date(latestCrawledAt).toISOString()
           : new Date().toISOString()
         
         // 6. 格式化数据，匹配前端期望的结构
@@ -78,7 +101,7 @@ export async function GET() {
           id: platform.id,
           name: platform.name,
           description: platform.description,
-          updateTime: latestCrawledAt,  // 使用真实的抓取时间
+          updateTime: updateTime,  // 使用真实的抓取时间
           color: platform.color,
           news: news.map(item => ({
             id: item.rank_order,  // 使用rank_order作为前端的id
