@@ -135,3 +135,5 @@ wps-news-aggregator2/
 # Script logs
 scripts/*.logtest-matting-results/
 scripts/稻壳热点选题神器API与抓取内容源
+logs/
+scripts/稻壳热点选题神器API与抓取内容源

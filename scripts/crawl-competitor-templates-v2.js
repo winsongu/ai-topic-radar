@@ -516,20 +516,66 @@ async function crawlPlatform(platformConfig) {
 }
 
 /**
- * 保存到数据库
+ * 保存到数据库（带全局去重逻辑）
+ * 
+ * 去重规则：
+ * - 相同的URL + 相同的标题 = 重复数据（全局去重，不限时间）
+ * - 跳过重复数据，只保存新数据
+ * - 历史数据通过定期清理策略管理（保留90天）
  */
 async function saveToDatabase(templates) {
   if (templates.length === 0) {
     console.log('   ⚠️  没有数据需要保存')
-    return { success: false, count: 0 }
+    return { success: false, count: 0, skipped: 0 }
   }
   
+  // 去重逻辑：检查数据库中是否已存在相同的URL+标题（全局查询）
+  console.log('   🔍 检查重复数据（全局去重）...')
+  
+  // 查询数据库中所有已存在的数据（不限日期）
+  const { data: existingData, error: queryError } = await supabase
+    .from('competitor_templates')
+    .select('url, title')
+  
+  if (queryError) {
+    console.log(`   ⚠️  无法查询已有数据: ${queryError.message}`)
+    console.log('   ℹ️  继续保存所有数据（不去重）')
+  }
+  
+  // 创建已存在的URL+标题组合的Set（用于快速查找）
+  const existingKeys = new Set()
+  if (existingData && existingData.length > 0) {
+    existingData.forEach(item => {
+      // 使用特殊分隔符避免碰撞
+      existingKeys.add(`${item.url}|||${item.title}`)
+    })
+    console.log(`   ℹ️  数据库现有 ${existingData.length} 条记录`)
+  }
+  
+  // 过滤掉重复数据
+  const uniqueTemplates = templates.filter(t => {
+    const key = `${t.url}|||${t.title}`
+    return !existingKeys.has(key)
+  })
+  
+  const skippedCount = templates.length - uniqueTemplates.length
+  if (skippedCount > 0) {
+    console.log(`   ⏭️  跳过 ${skippedCount} 条已存在的重复数据`)
+  }
+  
+  if (uniqueTemplates.length === 0) {
+    console.log('   ✅ 所有数据都已存在，无需保存')
+    return { success: true, count: 0, skipped: skippedCount }
+  }
+  
+  // 添加批次时间戳（同一批次使用相同时间戳）
   const batchTimestamp = new Date().toISOString()
-  const dataToInsert = templates.map(t => ({
+  const dataToInsert = uniqueTemplates.map(t => ({
     ...t,
     crawled_at: batchTimestamp
   }))
   
+  // 插入数据库
   const { data, error } = await supabase
     .from('competitor_templates')
     .insert(dataToInsert)
@@ -537,11 +583,15 @@ async function saveToDatabase(templates) {
   
   if (error) {
     console.error(`   ❌ 数据库插入失败: ${error.message}`)
-    return { success: false, count: 0, error: error.message }
+    return { success: false, count: 0, skipped: skippedCount, error: error.message }
   }
   
-  console.log(`   ✅ 成功保存 ${data.length} 条数据到数据库`)
-  return { success: true, count: data.length }
+  console.log(`   ✅ 成功保存 ${data.length} 条新数据到数据库`)
+  if (skippedCount > 0) {
+    console.log(`   📊 本次统计: 新增${data.length}条 + 跳过${skippedCount}条重复 = 总计抓取${templates.length}条`)
+  }
+  
+  return { success: true, count: data.length, skipped: skippedCount }
 }
 
 /**

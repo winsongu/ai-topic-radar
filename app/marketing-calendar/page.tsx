@@ -1,10 +1,11 @@
 "use client"
 
-import { useState, useMemo } from "react"
-import { ChevronLeft, ChevronRight, Star } from "lucide-react"
+import { useState, useMemo, useEffect } from "react"
+import { ChevronLeft, ChevronRight, Star, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navigation } from "@/components/navigation"
 import { FilterModal } from "@/components/filter-modal"
+import { CustomEventModal } from "@/components/custom-event-modal"
 
 // 导入生成的日历数据
 import calendarEventsData from "@/data/calendar-events.json"
@@ -16,6 +17,11 @@ const eventCategories = {
   lunar: { name: "农历节日", color: "text-gray-600" },
   international: { name: "国际节日", color: "text-gray-600" },
   memorial: { name: "纪念日", color: "text-gray-600" },
+  custom: { name: "自定义", color: "text-purple-600" },
+  company: { name: "公司活动", color: "text-blue-600" },
+  product: { name: "产品活动", color: "text-green-600" },
+  industry: { name: "行业活动", color: "text-indigo-600" },
+  marketing: { name: "营销活动", color: "text-pink-600" },
 }
 
 type ViewMode = "month" | "schedule" | "filter"
@@ -47,16 +53,36 @@ export default function MarketingCalendarPage() {
   const [currentMonth, setCurrentMonth] = useState(today.getMonth() + 1)
   const [currentYear, setCurrentYear] = useState(today.getFullYear())
   const [showFilterModal, setShowFilterModal] = useState(false)
+  const [showCustomEventModal, setShowCustomEventModal] = useState(false)
   const [selectedFilters, setSelectedFilters] = useState<string[]>([
     "weather",
     "solar",
     "lunar",
     "international",
     "memorial",
+    "custom",
+    "company",
+    "product",
+    "industry",
+    "marketing",
   ])
   const [expandedDays, setExpandedDays] = useState<number[]>([])
+  const [customEvents, setCustomEvents] = useState<any[]>([])
 
-  // 获取当前月份的日历数据
+  // 从 localStorage 加载自定义事件
+  useEffect(() => {
+    const stored = localStorage.getItem("customMarketingEvents")
+    if (stored) {
+      try {
+        const events = JSON.parse(stored)
+        setCustomEvents(events)
+      } catch (e) {
+        console.error("Failed to parse custom events:", e)
+      }
+    }
+  }, [])
+
+  // 获取当前月份的日历数据（包含自定义事件）
   const currentMonthEvents = useMemo(() => {
     const events = (calendarEventsData as CalendarEvent[]).filter(
       (event) => event.year === currentYear && event.month === currentMonth
@@ -73,15 +99,25 @@ export default function MarketingCalendarPage() {
       const weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
       const dayOfWeek = new Date(currentYear, currentMonth - 1, day).getDay()
       
+      // 合并系统事件和自定义事件
+      const systemEvents = existingEvent?.events || []
+      const customEventsForDay = customEvents
+        .filter((ce) => ce.year === currentYear && ce.month === currentMonth && ce.date === day)
+        .map((ce) => ({
+          title: ce.title,
+          category: ce.category,
+          isHighProfile: ce.isHighProfile,
+        }))
+      
       monthCalendar.push({
         date: day,
         day: weekdays[dayOfWeek],
-        events: existingEvent?.events || [],
+        events: [...systemEvents, ...customEventsForDay],
       })
     }
     
     return monthCalendar
-  }, [currentYear, currentMonth])
+  }, [currentYear, currentMonth, customEvents])
 
   // 获取当前月份的热点数据
   const currentMonthHotspot = useMemo(() => {
@@ -196,6 +232,14 @@ export default function MarketingCalendarPage() {
               onClick={() => setShowFilterModal(true)}
             >
               筛选事件
+            </Button>
+            <Button
+              variant="outline"
+              className="rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600"
+              onClick={() => setShowCustomEventModal(true)}
+            >
+              <Plus className="mr-1 h-4 w-4" />
+              添加营销节点
             </Button>
           </div>
 
@@ -398,6 +442,18 @@ export default function MarketingCalendarPage() {
           selectedFilters={selectedFilters}
           onFiltersChange={setSelectedFilters}
           onClose={() => setShowFilterModal(false)}
+        />
+      )}
+
+      {showCustomEventModal && (
+        <CustomEventModal
+          isOpen={showCustomEventModal}
+          onClose={() => setShowCustomEventModal(false)}
+          onSave={(events) => {
+            setCustomEvents(events)
+          }}
+          currentYear={currentYear}
+          currentMonth={currentMonth}
         />
       )}
     </div>

@@ -8,7 +8,9 @@
     "lint": "next lint",
     "start": "next start",
     "update:data": "node scripts/crawl-and-save-daily.js",
+    "update:competitor": "node scripts/crawl-competitor-templates-v2.js",
     "test:update": "node scripts/test-update.js",
+    "test:competitor": "node scripts/test-deduplication.js",
     "generate:calendar": "node scripts/generate-calendar-data.js"
   },
   "dependencies": {

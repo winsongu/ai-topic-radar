@@ -10,6 +10,11 @@ const filterCategories = [
   { id: "lunar", name: "农历假日", color: "border-pink-500" },
   { id: "international", name: "国际节日", color: "border-red-500" },
   { id: "memorial", name: "纪念日", color: "border-cyan-500" },
+  { id: "custom", name: "自定义", color: "border-purple-500" },
+  { id: "company", name: "公司活动", color: "border-blue-500" },
+  { id: "product", name: "产品活动", color: "border-green-500" },
+  { id: "industry", name: "行业活动", color: "border-indigo-500" },
+  { id: "marketing", name: "营销活动", color: "border-pink-500" },
 ]
 
 interface FilterModalProps {

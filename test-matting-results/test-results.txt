@@ -1,0 +1,49 @@
+AI抠图测试结果 - 2025年10月20日 星期一 16时09分00秒 CST
+================================
+
+---
+图片: red-chinese-style-ppt-template.jpg
+模型: comfyui
+状态: ❌ 失败
+错误: HTTP 000
+
+---
+图片: red-chinese-style-ppt-template.jpg
+模型: doubao
+状态: ✅ 成功
+耗时: 11秒
+大小: 1.4M
+路径: test-matting-results/red-chinese-style-ppt-template_doubao.png
+
+---
+图片: pink-hand-drawn-marketing-ppt-template.jpg
+模型: comfyui
+状态: ✅ 成功
+耗时: 91秒
+大小: 624K
+路径: test-matting-results/pink-hand-drawn-marketing-ppt-template_comfyui.png
+
+---
+图片: pink-hand-drawn-marketing-ppt-template.jpg
+模型: doubao
+状态: ✅ 成功
+耗时: 10秒
+大小: 924K
+路径: test-matting-results/pink-hand-drawn-marketing-ppt-template_doubao.png
+
+---
+图片: yellow-cartoon-teacher-day-ppt.jpg
+模型: comfyui
+状态: ✅ 成功
+耗时: 17秒
+大小: 1.8M
+路径: test-matting-results/yellow-cartoon-teacher-day-ppt_comfyui.png
+
+---
+图片: yellow-cartoon-teacher-day-ppt.jpg
+模型: doubao
+状态: ✅ 成功
+耗时: 14秒
+大小: 1.7M
+路径: test-matting-results/yellow-cartoon-teacher-day-ppt_doubao.png
+
