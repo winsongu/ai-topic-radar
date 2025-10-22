@@ -12,20 +12,32 @@
 - **输出目录**: `.next`
 - **Node.js版本**: 18.x 或更高
 
-#### 环境变量
-在 EdgeOne Pages 的环境变量中配置：
+#### 环境变量（⚠️ 重要）
+
+**必须在 EdgeOne Pages 控制台配置以下环境变量，否则应用将无法正常工作！**
+
+配置步骤：
+1. 登录 EdgeOne Pages 控制台
+2. 进入项目设置 -> 环境变量
+3. 添加以下变量（注意变量名大小写）
 
 ```bash
-# Supabase配置
+# Supabase配置（必需）
 NEXT_PUBLIC_SUPABASE_URL=https://sdxgocjszjnrqrfbsspn.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkeGdvY2pzempucnFyZmJzc3BuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5OTM4NjgsImV4cCI6MjA3NTU2OTg2OH0.8lJ8dCBTT3qwmwNdL71EMPcVAmZHAgBeEp3rr-X6GJU
 
-# Firecrawl API Key
+# Firecrawl API Key（必需）
 FIRECRAWL_API_KEY=fc-c34842bb4fd54a58a7b001c5369a3bcb
 
-# Deepseek API Key (如果需要AI功能)
+# Deepseek API Key（可选，如果需要AI功能）
 DEEPSEEK_API_KEY=sk-your-deepseek-key-here
 ```
+
+**重要提示**：
+- ⚠️ 配置环境变量后必须重新部署才能生效
+- ⚠️ 确保应用到 Production 环境
+- ⚠️ 变量名必须完全匹配（包括 `NEXT_PUBLIC_` 前缀）
+- 📚 详细配置指南请查看：`docs/EdgeOne_环境变量配置指南.md`
 
 ### 2. 自动更新配置
 
@@ -114,10 +126,16 @@ tail -f cron.log
 - 确认所有依赖包已安装
 - 查看构建日志中的具体错误
 
-#### 2. 环境变量问题
-- 确认所有必需的环境变量已配置
-- 检查变量名拼写是否正确
-- 验证API密钥是否有效
+#### 2. 环境变量问题（最常见）
+**症状**：构建成功但页面无数据，显示"Supabase未配置"
+**原因**：环境变量未配置或配置错误
+**解决**：
+- ✅ 在 EdgeOne Pages 控制台配置环境变量（不是在代码中）
+- ✅ 确认变量名完全正确：`NEXT_PUBLIC_SUPABASE_URL`（注意前缀）
+- ✅ 确认变量值没有多余空格
+- ✅ 配置后必须触发重新部署
+- ✅ 确保应用到 Production 环境
+- 📚 详细步骤：`docs/EdgeOne_环境变量配置指南.md`
 
 #### 3. 数据库连接失败
 - 检查Supabase URL和密钥
@@ -160,14 +178,33 @@ tail -f cron.log
 
 - [ ] EdgeOne Pages项目创建成功
 - [ ] GitHub仓库连接正常
-- [ ] 环境变量配置完整
+- [ ] ⚠️ **环境变量配置完整**（最关键！）
+  - [ ] NEXT_PUBLIC_SUPABASE_URL 已配置
+  - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY 已配置
+  - [ ] FIRECRAWL_API_KEY 已配置
+  - [ ] 已触发重新部署
 - [ ] 域名解析正确
 - [ ] SSL证书生效
 - [ ] 前端页面正常访问
-- [ ] API接口正常工作
+- [ ] ✅ **API接口正常工作**
+  - [ ] 访问 /competitor-dynamics 能看到数据
+  - [ ] 访问 /api/competitor-templates 返回 success: true
+  - [ ] 浏览器控制台无错误
 - [ ] 数据库连接正常
-- [ ] 定时任务配置完成
+- [ ] 定时任务配置完成（可选）
 - [ ] 监控和日志正常
+
+### 快速验证命令
+
+```bash
+# 验证API是否正常
+curl https://你的域名.com/api/competitor-templates
+
+# 应该返回：
+# {"success": true, "data": {...}}
+
+# 如果返回 "Supabase未配置"，说明环境变量没配置
+```
 
 ---
 

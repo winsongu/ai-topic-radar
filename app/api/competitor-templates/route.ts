@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server'
 import { supabase, hasSupabaseConfig } from '@/lib/supabase'
 
+// 强制动态渲染，禁用缓存
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 /**
  * GET /api/competitor-templates
  * 获取竞品模板数据（最新批次）
@@ -159,6 +163,12 @@ export async function GET(request: Request) {
         totalPlatforms: validPlatforms.length,
         lastUpdate: new Date().toISOString()
       }
+    }, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      }
     })
 
   } catch (error) {
@@ -166,7 +176,12 @@ export async function GET(request: Request) {
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : '未知错误'
-    }, { status: 500 })
+    }, { 
+      status: 500,
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
+      }
+    })
   }
 }
 

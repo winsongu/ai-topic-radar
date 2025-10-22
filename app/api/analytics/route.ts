@@ -1,6 +1,17 @@
 import { NextResponse } from 'next/server'
 import { supabase, hasSupabaseConfig } from '@/lib/supabase'
 
+// 强制动态渲染，禁用缓存
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
+// 缓存控制头
+const noCacheHeaders = {
+  'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+  'Pragma': 'no-cache',
+  'Expires': '0'
+}
+
 /**
  * GET /api/analytics
  * 数据分析API：支持月度复盘、热度趋势、热词统计
@@ -26,7 +37,10 @@ export async function GET(request: Request) {
       return NextResponse.json({
         success: false,
         error: 'Supabase未配置'
-      }, { status: 500 })
+      }, { 
+        status: 500,
+        headers: noCacheHeaders
+      })
     }
 
     const { searchParams } = new URL(request.url)
@@ -53,7 +67,10 @@ export async function GET(request: Request) {
           return NextResponse.json({
             success: false,
             error: '趋势分析需要提供 title 参数'
-          }, { status: 400 })
+          }, { 
+            status: 400,
+            headers: noCacheHeaders
+          })
         }
         return await getTrendAnalysis(title, queryStartDate, queryEndDate, platform)
       
@@ -67,7 +84,10 @@ export async function GET(request: Request) {
         return NextResponse.json({
           success: false,
           error: '不支持的分析类型'
-        }, { status: 400 })
+        }, { 
+          status: 400,
+          headers: noCacheHeaders
+        })
     }
     
   } catch (error: any) {
@@ -77,7 +97,10 @@ export async function GET(request: Request) {
         success: false, 
         error: error.message || 'Failed to fetch analytics data'
       },
-      { status: 500 }
+      { 
+        status: 500,
+        headers: noCacheHeaders
+      }
     )
   }
 }
@@ -165,6 +188,8 @@ async function getMonthlyReport(startDate: string, endDate: string, platform?: s
       topKeywords
     },
     summary
+  }, {
+    headers: noCacheHeaders
   })
 }
 
@@ -219,6 +244,8 @@ async function getTrendAnalysis(
     success: true,
     data: trendData,
     summary
+  }, {
+    headers: noCacheHeaders
   })
 }
 
@@ -287,6 +314,8 @@ async function getKeywordsStats(
       totalKeywords: Object.keys(keywordStats).length,
       dateRange: { startDate, endDate }
     }
+  }, {
+    headers: noCacheHeaders
   })
 }
 
@@ -337,6 +366,8 @@ async function getPlatformStats(startDate: string, endDate: string) {
       totalPlatforms: stats.length,
       dateRange: { startDate, endDate }
     }
+  }, {
+    headers: noCacheHeaders
   })
 }
 

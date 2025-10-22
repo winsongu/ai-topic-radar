@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server'
 import { supabase, hasSupabaseConfig } from '@/lib/supabase'
 
+// 强制动态渲染，禁用缓存
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 /**
  * GET /api/hot-news
  * 获取所有平台的最新热点新闻
@@ -119,6 +123,12 @@ export async function GET() {
       success: true,
       data: platformsWithNews,
       updatedAt: new Date().toISOString()
+    }, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      }
     })
     
   } catch (error: any) {
@@ -129,7 +139,12 @@ export async function GET() {
         error: error.message || 'Failed to fetch hot news',
         data: []
       },
-      { status: 500 }
+      { 
+        status: 500,
+        headers: {
+          'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
+        }
+      }
     )
   }
 }
