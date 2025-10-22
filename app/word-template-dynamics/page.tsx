@@ -361,6 +361,7 @@ export default function WordTemplateDynamicsPage() {
                     <img
                       src={template.thumbnail || "/placeholder.svg"}
                       alt={template.title}
+                      referrerPolicy="no-referrer"
                       className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
                     />
                     {/* Hover overlay with preview button */}
@@ -656,6 +657,7 @@ export default function WordTemplateDynamicsPage() {
                 <img
                   src={previewTemplate.thumbnail || "/placeholder.svg"}
                   alt={previewTemplate.title}
+                  referrerPolicy="no-referrer"
                   className="h-auto w-full object-contain"
                 />
               </div>

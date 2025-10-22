@@ -18,7 +18,9 @@ if (!FIRECRAWL_API_KEY) {
 
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-// 使用 Firecrawl API 抓取
+/**
+ * 使用 Firecrawl API 抓取
+ */
 async function fetchWithFirecrawl(url) {
   const response = await fetch('https://api.firecrawl.dev/v1/scrape', {
     method: 'POST',
@@ -29,7 +31,8 @@ async function fetchWithFirecrawl(url) {
     body: JSON.stringify({
       url: url,
       formats: ['markdown'],
-      onlyMainContent: false
+      onlyMainContent: false,
+      timeout: 60000
     })
   })
   
@@ -45,7 +48,9 @@ async function fetchWithFirecrawl(url) {
   return result.data
 }
 
-// 从标题中提取标签
+/**
+ * 从标题中提取标签
+ */
 function extractTagsFromTitle(title) {
   const tags = []
   
@@ -56,13 +61,13 @@ function extractTagsFromTitle(title) {
   })
   
   // 风格标签
-  const styles = ['卡通', '简约', '古风', '国潮', '手绘', '清新', '可爱', '创意']
+  const styles = ['卡通', '简约', '古风', '国潮', '手绘', '清新', '可爱', '创意', '商务']
   styles.forEach(style => {
     if (title.includes(style)) tags.push(style)
   })
   
   // 主题标签
-  const themes = ['重阳节', '国庆', '中秋', '春节', '教师节', '儿童节', '端午', '元宵']
+  const themes = ['重阳节', '国庆', '中秋', '春节', '教师节', '儿童节', '端午', '元宵', '母亲节', '父亲节']
   themes.forEach(theme => {
     if (title.includes(theme)) tags.push(theme)
   })
@@ -70,17 +75,21 @@ function extractTagsFromTitle(title) {
   return tags
 }
 
-// 从标题中提取分类
+/**
+ * 从标题中提取分类
+ */
 function extractCategoryFromTitle(title) {
   if (title.includes('重阳') || title.includes('国庆') || title.includes('中秋') || 
-      title.includes('春节') || title.includes('节日')) {
+      title.includes('春节') || title.includes('节日') || title.includes('母亲节') || 
+      title.includes('父亲节') || title.includes('教师节')) {
     return '节日'
   }
   if (title.includes('教学') || title.includes('课程') || title.includes('学习') || 
-      title.includes('小学生')) {
+      title.includes('小学生') || title.includes('学校')) {
     return '教育'
   }
-  if (title.includes('营销') || title.includes('活动') || title.includes('宣传')) {
+  if (title.includes('营销') || title.includes('活动') || title.includes('宣传') || 
+      title.includes('招聘') || title.includes('商务')) {
     return '营销'
   }
   if (title.includes('秋天') || title.includes('风景') || title.includes('季节')) {
@@ -89,10 +98,12 @@ function extractCategoryFromTitle(title) {
   return '其他'
 }
 
-// 提取觅知手抄报详情页URL
+// ==================== 觅知手抄报 ====================
+
 function extractMizShouchaobaoUrls(markdown, limit = 8) {
   const urls = []
-  const pattern = /https:\/\/www\.51miz\.com\/shouchaobao\/[a-z]+\/([0-9]+)\.html/gi
+  // 匹配格式: /shouchaobao/20191011141515.html 或 /shouchaobao/ziyuan/20191011141515.html
+  const pattern = /https:\/\/www\.51miz\.com\/shouchaobao\/(?:[a-z]+\/)?([0-9]+)\.html/gi
   let match
   while ((match = pattern.exec(markdown)) !== null && urls.length < limit) {
     const url = match[0]
@@ -103,21 +114,6 @@ function extractMizShouchaobaoUrls(markdown, limit = 8) {
   return urls
 }
 
-// 提取觅知营销日历详情页URL
-function extractMizSucaiUrls(markdown, limit = 6) {
-  const urls = []
-  const pattern = /https:\/\/www\.51miz\.com\/sucai\/([0-9]+)\.html/gi
-  let match
-  while ((match = pattern.exec(markdown)) !== null && urls.length < limit) {
-    const url = match[0]
-    if (!urls.includes(url)) {
-      urls.push(url)
-    }
-  }
-  return urls
-}
-
-// 解析觅知手抄报详情页
 function parseMizShouchaobaoDetail(markdown, url) {
   const template = {
     title: null,
@@ -180,7 +176,21 @@ function parseMizShouchaobaoDetail(markdown, url) {
   return template
 }
 
-// 解析觅知营销日历详情页
+// ==================== 觅知营销日历 ====================
+
+function extractMizSucaiUrls(markdown, limit = 6) {
+  const urls = []
+  const pattern = /https:\/\/www\.51miz\.com\/sucai\/([0-9]+)\.html/gi
+  let match
+  while ((match = pattern.exec(markdown)) !== null && urls.length < limit) {
+    const url = match[0]
+    if (!urls.includes(url)) {
+      urls.push(url)
+    }
+  }
+  return urls
+}
+
 function parseMizSucaiDetail(markdown, url) {
   const template = {
     title: null,
@@ -210,24 +220,8 @@ function parseMizSucaiDetail(markdown, url) {
     }
   }
   
-  // 如果还没找到标题，从前50行查找
-  if (!template.title) {
-    const lines = markdown.split('\n').slice(0, 50)
-    for (const line of lines) {
-      const cleaned = line.trim()
-      if (cleaned.length > 5 && cleaned.length < 80 && 
-          !cleaned.startsWith('[![') &&
-          !cleaned.startsWith('![') &&
-          !cleaned.startsWith('[') &&
-          !cleaned.startsWith('http')) {
-        template.title = cleaned
-        break
-      }
-    }
-  }
-  
-  // 提取缩略图
-  const imgPattern = /!\[[^\]]*\]\((https:\/\/imgs-qn\.51miz\.com\/[^\s)]+\.(?:jpg|png))/gi
+  // 提取缩略图 - 支持 imgs-qn 和 img-qn 两种域名
+  const imgPattern = /!\[[^\]]*\]\((https:\/\/imgs?-qn\.51miz\.com\/[^\s)]+\.(?:jpg|png))/gi
   const images = []
   let imgMatch
   while ((imgMatch = imgPattern.exec(markdown)) !== null && images.length < 5) {
@@ -252,7 +246,101 @@ function parseMizSucaiDetail(markdown, url) {
   return template
 }
 
-// 保存到数据库（带全局去重）
+// ==================== 熊猫办公 ====================
+
+function extractTukupptUrls(markdown, limit = 10) {
+  const urls = []
+  // Word模板详情页格式: https://www.tukuppt.com/muban/xxx.html
+  const pattern = /https:\/\/www\.tukuppt\.com\/muban\/[a-z]+\.html/g
+  let match
+  
+  while ((match = pattern.exec(markdown)) !== null && urls.length < limit) {
+    if (!urls.includes(match[0])) {
+      urls.push(match[0])
+    }
+  }
+  
+  return urls
+}
+
+function parseTukupptDetail(markdown, url) {
+  const template = {
+    title: null,
+    type: null,
+    platform: '熊猫办公',
+    url: url,
+    thumbnail: null,
+    tags: [],
+    category: null,
+    description: null,
+    author: null,
+    hot_value: 0,
+    is_hot: false
+  }
+  
+  // 提取标题（第一个 # 标题）
+  const titleMatch = markdown.match(/^#\s+([^\n]+)/m)
+  if (titleMatch) {
+    template.title = titleMatch[1].trim()
+  }
+  
+  // 提取作者
+  const authorMatch = markdown.match(/作者[为\s]*[：:]*\s*([^\n]+)/i)
+  if (authorMatch) {
+    template.author = authorMatch[1].trim()
+  }
+  
+  // 提取缩略图（优先使用img.tukuppt.com/preview/的封面图）
+  const imgPattern = /!\[[^\]]*\]\((https:\/\/(?:img|static)\.tukuppt\.com\/[^\s)]+\.(?:jpg|jpeg|png))/gi
+  const imgs = []
+  let imgMatch
+  while ((imgMatch = imgPattern.exec(markdown)) !== null) {
+    const imgUrl = imgMatch[1]
+    // 排除logo、icon、会员图标
+    if (!imgUrl.includes('logo') && 
+        !imgUrl.includes('icon') && 
+        !imgUrl.includes('vip') &&
+        !imgUrl.includes('member') &&
+        !imgUrl.includes('avatar')) {
+      imgs.push(imgUrl)
+    }
+  }
+  
+  // 优先选择preview路径的封面图（真实封面）
+  const previewImg = imgs.find(img => img.includes('img.tukuppt.com/preview/'))
+  if (previewImg) {
+    template.thumbnail = previewImg
+  } else if (imgs.length > 0) {
+    // 如果没有preview图片，使用第一张非logo图片
+    template.thumbnail = imgs[0]
+  }
+  
+  // 判断类型
+  if (template.title) {
+    if (template.title.includes('手抄报') || template.title.includes('小报')) {
+      template.type = '手抄报'
+    } else if (template.title.includes('海报')) {
+      template.type = '海报'
+    } else if (template.title.includes('日历')) {
+      template.type = '日历'
+    } else if (template.title.includes('贺卡')) {
+      template.type = '贺卡'
+    } else if (template.title.includes('简历')) {
+      template.type = '简历'
+    } else {
+      template.type = 'Word模板'
+    }
+    
+    template.tags = extractTagsFromTitle(template.title)
+    template.category = extractCategoryFromTitle(template.title)
+    template.description = template.title
+  }
+  
+  return template
+}
+
+// ==================== 保存到数据库 ====================
+
 async function saveToDatabase(templates) {
   if (templates.length === 0) {
     console.log('   ⚠️  没有数据需要保存')
@@ -316,7 +404,8 @@ async function saveToDatabase(templates) {
   return { success: true, count: data.length, skipped: skippedCount }
 }
 
-// 主抓取函数
+// ==================== 主抓取函数 ====================
+
 async function crawlWordTemplates() {
   console.log('🚀 开始抓取文字模板数据')
   console.log(`⏰ 时间: ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}`)
@@ -422,30 +511,73 @@ async function crawlWordTemplates() {
     results.push({ platform: '觅知营销日历', count: 0, error: error.message })
   }
   
+  // 3. 抓取熊猫办公Word模板
+  console.log('📊 正在抓取: 熊猫办公')
+  console.log('   🌐 列表页: https://www.tukuppt.com/word/time_0_0_0_0_0_0_1.html')
+  try {
+    console.log('   🔥 Firecrawl抓取列表页...')
+    const listResult = await fetchWithFirecrawl('https://www.tukuppt.com/word/time_0_0_0_0_0_0_1.html')
+    const listMarkdown = listResult.markdown || ''
+    
+    const detailUrls = extractTukupptUrls(listMarkdown, 10)
+    console.log(`   ✅ 找到 ${detailUrls.length} 个详情页URL`)
+    
+    let successCount = 0
+    for (let i = 0; i < detailUrls.length; i++) {
+      const url = detailUrls[i]
+      console.log(`   📄 [${i+1}/${detailUrls.length}] 抓取详情页...`)
+      console.log(`   🔥 Firecrawl抓取: ${url}`)
+      
+      try {
+        const detailResult = await fetchWithFirecrawl(url)
+        const detailMarkdown = detailResult.markdown || ''
+        
+        const template = parseTukupptDetail(detailMarkdown, url)
+        
+        if (template.title) {
+          console.log(`      ✅ ${template.title}`)
+          allTemplates.push(template)
+          successCount++
+        } else {
+          console.log(`      ⚠️  解析失败（未找到标题）`)
+        }
+      } catch (error) {
+        console.log(`      ❌ 抓取失败: ${error.message}`)
+      }
+      
+      // 避免请求过快
+      if (i < detailUrls.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 1000))
+      }
+    }
+    
+    console.log(`   ✅ 熊猫办公: 成功提取 ${successCount} 个模板\n`)
+    results.push({ platform: '熊猫办公', count: successCount })
+    
+  } catch (error) {
+    console.error(`   ❌ 熊猫办公抓取失败: ${error.message}\n`)
+    results.push({ platform: '熊猫办公', count: 0, error: error.message })
+  }
+  
   // 保存到数据库
   console.log('💾 保存数据到 Supabase...')
   const saveResult = await saveToDatabase(allTemplates)
   
-  // 输出总结
+  // 输出统计
   console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
   console.log('📊 抓取完成！')
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
-  console.log(`✅ 成功抓取: ${results.length}/2 个平台`)
+  console.log(`✅ 成功抓取: ${results.length}/3 个平台`)
   console.log(`📝 新增数据: ${saveResult.count} 条模板`)
   console.log(`⏭️  跳过重复: ${saveResult.skipped} 条`)
   console.log(`📅 下次抓取: 建议每天执行一次`)
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n')
-  
-  console.log('详细结果:')
+  console.log(`详细结果:`)
   results.forEach(r => {
-    const status = r.error ? '❌' : '✅'
-    const info = r.error ? ` (${r.error})` : `: ${r.count} 条`
-    console.log(`  ${status} ${r.platform}${info}`)
+    console.log(`  ✅ ${r.platform}: ${r.count} 条`)
   })
-  
-  console.log('\n💡 提示: 可以配置GitHub Actions定时任务每天执行此脚本')
+  console.log(`\n💡 提示: 可以配置GitHub Actions定时任务每天执行此脚本`)
 }
 
-// 执行
+// 运行爬虫
 crawlWordTemplates().catch(console.error)
-

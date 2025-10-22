@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { TrendingUp, Home, Sparkles, Calendar, Target } from "lucide-react"
+import { TrendingUp, Home, Sparkles, Calendar, Target, FileText } from "lucide-react"
 
 export function Navigation() {
   const pathname = usePathname()
@@ -42,6 +42,17 @@ export function Navigation() {
           >
             <Target className="h-4 w-4" />
             竞品动态
+          </Link>
+          <Link
+            href="/word-template-dynamics"
+            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition-colors ${
+              pathname === "/word-template-dynamics"
+                ? "bg-primary/10 text-primary"
+                : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+            }`}
+          >
+            <FileText className="h-4 w-4" />
+            文字模板
           </Link>
           <Link
             href="/ai-suggestions"
