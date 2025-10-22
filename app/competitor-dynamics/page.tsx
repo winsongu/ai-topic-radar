@@ -82,24 +82,35 @@ export default function CompetitorDynamicsPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [lastUpdateTime, setLastUpdateTime] = useState<string>("")
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
+  const pageSize = 50 // 每页50条
+  const maxPages = 5   // 限制显示5页
 
   const additionalUsages = allUsages.filter((usage) => !usages.includes(usage))
 
   // 从API获取数据
   useEffect(() => {
-    fetchCompetitorData()
-  }, [])
+    fetchCompetitorData(currentPage)
+  }, [currentPage])
 
-  async function fetchCompetitorData() {
+  async function fetchCompetitorData(page: number = 1) {
     setLoading(true)
     setError(null)
     
     try {
-      const response = await fetch('/api/competitor-templates')
+      const response = await fetch(`/api/competitor-templates?page=${page}&pageSize=${pageSize}`)
       const result = await response.json()
       
       if (result.success && result.data) {
         setPlatformsData(result.data.platforms || [])
+        // 计算总页数（取所有平台中的最大页数，但限制为maxPages）
+        const maxPlatformPages = Math.max(
+          ...result.data.platforms.map((p: any) => p.totalPages || 0),
+          1
+        )
+        setTotalPages(Math.min(maxPlatformPages, maxPages))
+        
         // 找到最新的更新时间
         const latestUpdate = result.data.platforms
           .map((p: PlatformData) => p.updateTime)
@@ -152,7 +163,10 @@ export default function CompetitorDynamicsPage() {
           <p className="text-sm text-muted-foreground">实时追踪PPT模板市场动态，把握设计趋势</p>
           </div>
           <Button
-            onClick={fetchCompetitorData}
+            onClick={() => {
+              setCurrentPage(1) // 重置到第一页
+              fetchCompetitorData(1)
+            }}
             disabled={loading}
             variant="outline"
             size="sm"
@@ -315,7 +329,7 @@ export default function CompetitorDynamicsPage() {
         {error && (
           <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-center">
             <p className="text-sm text-red-600">❌ {error}</p>
-            <Button onClick={fetchCompetitorData} variant="outline" size="sm" className="mt-3">
+            <Button onClick={() => fetchCompetitorData(currentPage)} variant="outline" size="sm" className="mt-3">
               重试
             </Button>
           </div>
@@ -325,7 +339,16 @@ export default function CompetitorDynamicsPage() {
         {!loading && !error && (
           <>
         <div className="mb-4 flex items-center justify-between">
-          <p className="text-xs text-muted-foreground">共找到 {filteredTemplates.length} 个模板</p>
+          <div className="flex items-center gap-4">
+            <p className="text-xs text-muted-foreground">
+              当前页: {filteredTemplates.length} 个模板
+            </p>
+            {totalPages > 1 && (
+              <p className="text-xs text-blue-600">
+                第 {currentPage} / {totalPages} 页
+              </p>
+            )}
+          </div>
               <p className="text-xs text-blue-600 font-medium">
                 最后更新: {lastUpdateTime ? formatChineseDateTime(lastUpdateTime) : '暂无数据'}
               </p>
@@ -461,6 +484,49 @@ export default function CompetitorDynamicsPage() {
                 ))
               )}
         </div>
+
+        {/* Pagination - 分页导航 */}
+        {!loading && !error && filteredTemplates.length > 0 && totalPages > 1 && (
+          <div className="mt-8 flex items-center justify-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+              disabled={currentPage === 1}
+              className="gap-1"
+            >
+              上一页
+            </Button>
+            
+            <div className="flex gap-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                <Button
+                  key={page}
+                  variant={currentPage === page ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setCurrentPage(page)}
+                  className="w-9 h-9"
+                >
+                  {page}
+                </Button>
+          ))}
+        </div>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+              disabled={currentPage === totalPages}
+              className="gap-1"
+            >
+              下一页
+            </Button>
+
+            <span className="ml-3 text-xs text-muted-foreground">
+              第 {currentPage} / {totalPages} 页（最多显示{maxPages}页）
+            </span>
+          </div>
+        )}
           </>
         )}
           </div>

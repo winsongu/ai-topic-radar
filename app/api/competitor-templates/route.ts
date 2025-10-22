@@ -7,11 +7,12 @@ export const revalidate = 0
 
 /**
  * GET /api/competitor-templates
- * 获取竞品模板数据（最新批次）
+ * 获取竞品模板数据（所有历史数据，支持分页）
  * 
  * 查询参数：
  * - platform: 平台筛选（可选）：aippt, tukuppt, islide, canva
- * - limit: 每个平台返回的数量（默认10）
+ * - page: 页码（默认1）
+ * - pageSize: 每页数量（默认50，最大100）
  * 
  * 返回格式：
  * {
@@ -23,7 +24,9 @@ export const revalidate = 0
  *         name: string,
  *         templates: [...],
  *         updateTime: string,
- *         totalCount: number
+ *         totalCount: number,
+ *         currentPage: number,
+ *         totalPages: number
  *       }
  *     ]
  *   }
@@ -41,7 +44,8 @@ export async function GET(request: Request) {
 
     const { searchParams } = new URL(request.url)
     const platformFilter = searchParams.get('platform')
-    const limit = parseInt(searchParams.get('limit') || '10')
+    const page = Math.max(1, parseInt(searchParams.get('page') || '1'))
+    const pageSize = Math.min(100, Math.max(1, parseInt(searchParams.get('pageSize') || '50')))
 
     // 平台配置
     const platforms = [
@@ -56,33 +60,34 @@ export async function GET(request: Request) {
       ? platforms.filter(p => p.id === platformFilter)
       : platforms
 
-    // 为每个平台获取最新批次的模板
+    // 为每个平台获取所有历史模板（支持分页）
     const platformsWithTemplates = await Promise.all(
       platformsToQuery.map(async (platform) => {
         try {
-          // 1. 获取该平台最新的抓取时间
-          const { data: latestBatch, error: batchError } = await supabase
+          // 1. 获取该平台的总数据量
+          const { count, error: countError } = await supabase
             .from('competitor_templates')
-            .select('crawled_at')
+            .select('*', { count: 'exact', head: true })
             .eq('platform', platform.name)
-            .order('crawled_at', { ascending: false })
-            .limit(1)
 
-          if (batchError) {
-            console.error(`获取${platform.name}最新批次失败:`, batchError)
+          if (countError) {
+            console.error(`获取${platform.name}数据总数失败:`, countError)
             return {
               id: platform.id,
               name: platform.name,
               color: platform.color,
               templates: [],
               updateTime: new Date().toISOString(),
-              totalCount: 0
+              totalCount: 0,
+              currentPage: page,
+              totalPages: 0
             }
           }
 
-          const latestCrawledAt = latestBatch?.[0]?.crawled_at
+          const totalCount = count || 0
+          const totalPages = Math.ceil(totalCount / pageSize)
 
-          if (!latestCrawledAt) {
+          if (totalCount === 0) {
             // 该平台还没有数据
             return {
               id: platform.id,
@@ -90,19 +95,22 @@ export async function GET(request: Request) {
               color: platform.color,
               templates: [],
               updateTime: new Date().toISOString(),
-              totalCount: 0
+              totalCount: 0,
+              currentPage: page,
+              totalPages: 0
             }
           }
 
-          // 2. 获取该批次的模板数据
+          // 2. 获取该平台的模板数据（分页）
+          const offset = (page - 1) * pageSize
           const { data: templates, error: templatesError } = await supabase
             .from('competitor_templates')
             .select('*')
             .eq('platform', platform.name)
-            .eq('crawled_at', latestCrawledAt)
-            .order('hot_value', { ascending: false })
-            .order('id', { ascending: false })
-            .limit(limit)
+            .order('crawled_at', { ascending: false })  // 最新入库的排前面
+            .order('hot_value', { ascending: false })   // 同批次按热度排序
+            .order('id', { ascending: false })          // 最后按ID排序
+            .range(offset, offset + pageSize - 1)
 
           if (templatesError) {
             console.error(`获取${platform.name}模板数据失败:`, templatesError)
@@ -111,12 +119,17 @@ export async function GET(request: Request) {
               name: platform.name,
               color: platform.color,
               templates: [],
-              updateTime: latestCrawledAt,
-              totalCount: 0
+              updateTime: new Date().toISOString(),
+              totalCount: 0,
+              currentPage: page,
+              totalPages: 0
             }
           }
 
-          // 3. 格式化数据
+          // 3. 获取最新抓取时间（用于显示更新时间）
+          const latestCrawledAt = templates?.[0]?.crawled_at || new Date().toISOString()
+
+          // 4. 格式化数据
           return {
             id: platform.id,
             name: platform.name,
@@ -133,11 +146,13 @@ export async function GET(request: Request) {
               url: t.url,
               platform: t.platform,
               thumbnail: t.thumbnail,
-              isFree: t.isFree || false,
+              isFree: t.is_free || false,
               crawled_at: t.crawled_at  // 添加入库时间字段
             })) || [],
             updateTime: latestCrawledAt,
-            totalCount: templates?.length || 0
+            totalCount: totalCount,
+            currentPage: page,
+            totalPages: totalPages
           }
         } catch (error) {
           console.error(`处理${platform.name}数据失败:`, error)
@@ -147,7 +162,9 @@ export async function GET(request: Request) {
             color: platform.color,
             templates: [],
             updateTime: new Date().toISOString(),
-            totalCount: 0
+            totalCount: 0,
+            currentPage: page,
+            totalPages: 0
           }
         }
       })
