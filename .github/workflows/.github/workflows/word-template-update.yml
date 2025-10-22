@@ -1,0 +1,36 @@
+name: 文字模板动态每日更新
+
+on:
+  schedule:
+    # 每天北京时间早上 9:00 执行（UTC 1:00）
+    - cron: '0 1 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  update-word-template-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      
+      - name: 安装依赖
+        run: npm ci
+      
+      - name: 执行文字模板数据更新
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+        run: npm run update:word-templates
+      
+      - name: 完成
+        run: |
+          echo "✅ 文字模板数据更新成功！"
+          echo "⏰ 执行时间: $(date '+%Y-%m-%d %H:%M:%S')"
