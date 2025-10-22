@@ -10,9 +10,6 @@ const nextConfig = {
     unoptimized: true,
     domains: ['images.unsplash.com'],
   },
-  
-  // 优化构建性能
-  swcMinify: true,
 }
 
 export default nextConfig

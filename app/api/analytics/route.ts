@@ -3,8 +3,8 @@ import { supabase, hasSupabaseConfig } from '@/lib/supabase'
 
 // 使用 Node.js 运行时（EdgeOne Pages 兼容性更好）
 export const runtime = 'nodejs'
-// 强制动态渲染，禁用缓存
-export const dynamic = 'force-dynamic'
+// 注意：暂时不使用 dynamic = 'force-dynamic'，因为会导致 EdgeOne Pages 部署超时
+// 通过 HTTP 缓存控制头来确保不缓存数据
 export const revalidate = 0
 
 // 缓存控制头
