@@ -17,11 +17,6 @@ const eventCategories = {
   lunar: { name: "农历节日", color: "text-gray-600" },
   international: { name: "国际节日", color: "text-gray-600" },
   memorial: { name: "纪念日", color: "text-gray-600" },
-  custom: { name: "自定义", color: "text-purple-600" },
-  company: { name: "公司活动", color: "text-blue-600" },
-  product: { name: "产品活动", color: "text-green-600" },
-  industry: { name: "行业活动", color: "text-indigo-600" },
-  marketing: { name: "营销活动", color: "text-pink-600" },
 }
 
 type ViewMode = "month" | "schedule" | "filter"
@@ -60,12 +55,8 @@ export default function MarketingCalendarPage() {
     "lunar",
     "international",
     "memorial",
-    "custom",
-    "company",
-    "product",
-    "industry",
-    "marketing",
   ])
+  const [showCustomEvents, setShowCustomEvents] = useState(true)
   const [expandedDays, setExpandedDays] = useState<number[]>([])
   const [customEvents, setCustomEvents] = useState<any[]>([])
 
@@ -170,7 +161,15 @@ export default function MarketingCalendarPage() {
 
   const filteredEvents = currentMonthEvents.map((day) => ({
     ...day,
-    events: day.events.filter((event) => selectedFilters.includes(event.category)),
+    events: day.events.filter((event) => {
+      // 系统事件根据筛选器显示
+      if (selectedFilters.includes(event.category)) {
+        return true
+      }
+      // 自定义事件根据 showCustomEvents 开关显示
+      const isCustomEvent = !["weather", "solar", "lunar", "international", "memorial"].includes(event.category)
+      return isCustomEvent && showCustomEvents
+    }),
   }))
 
   const toggleDayExpansion = (date: number) => {
@@ -186,7 +185,12 @@ export default function MarketingCalendarPage() {
     if (category === "weather") {
       return "text-sky-500"
     }
-    // 其他显示灰色
+    // 自定义事件显示紫色
+    const isCustomEvent = !["weather", "solar", "lunar", "international", "memorial"].includes(category)
+    if (isCustomEvent) {
+      return "text-purple-600"
+    }
+    // 系统节日显示灰色
     return "text-gray-600"
   }
 
@@ -441,6 +445,8 @@ export default function MarketingCalendarPage() {
         <FilterModal
           selectedFilters={selectedFilters}
           onFiltersChange={setSelectedFilters}
+          showCustomEvents={showCustomEvents}
+          onShowCustomEventsChange={setShowCustomEvents}
           onClose={() => setShowFilterModal(false)}
         />
       )}

@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import { supabase, hasSupabaseConfig } from '@/lib/supabase'
 
+// 使用 Node.js 运行时（EdgeOne Pages 兼容性更好）
+export const runtime = 'nodejs'
 // 强制动态渲染，禁用缓存
 export const dynamic = 'force-dynamic'
 export const revalidate = 0

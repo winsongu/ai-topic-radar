@@ -211,20 +211,15 @@ export function CustomEventModal({ isOpen, onClose, onSave, currentYear, current
 
                 <div>
                   <Label htmlFor="category" className="text-sm font-medium">
-                    分类
+                    分类标签
                   </Label>
-                  <select
+                  <Input
                     id="category"
+                    placeholder="例如：公司活动、产品发布、营销推广等"
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="mt-1.5 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    <option value="custom">自定义</option>
-                    <option value="company">公司活动</option>
-                    <option value="product">产品活动</option>
-                    <option value="industry">行业活动</option>
-                    <option value="marketing">营销活动</option>
-                  </select>
+                    className="mt-1.5"
+                  />
                 </div>
 
                 <div className="flex items-center gap-2 rounded-lg bg-background p-3">
@@ -258,7 +253,7 @@ export function CustomEventModal({ isOpen, onClose, onSave, currentYear, current
               <p className="font-medium">💡 使用提示</p>
               <ul className="mt-2 space-y-1 text-xs">
                 <li>• 自定义热点仅保存在本地浏览器中</li>
-                <li>• 可以添加公司活动、产品发布等专属节点</li>
+                <li>• 分类标签可自由填写，如"公司活动"、"产品发布"等</li>
                 <li>• 重点热点会显示橙色星标，在日历中更醒目</li>
                 <li>• 清除浏览器数据会删除所有自定义热点</li>
               </ul>
@@ -309,14 +304,14 @@ export function CustomEventModal({ isOpen, onClose, onSave, currentYear, current
                         <span>
                           {event.year}年{event.month}月{event.date}日
                         </span>
-                        <span>•</span>
-                        <span className="rounded-full bg-muted px-2 py-0.5">
-                          {event.category === "custom" && "自定义"}
-                          {event.category === "company" && "公司活动"}
-                          {event.category === "product" && "产品活动"}
-                          {event.category === "industry" && "行业活动"}
-                          {event.category === "marketing" && "营销活动"}
-                        </span>
+                        {event.category && (
+                          <>
+                            <span>•</span>
+                            <span className="rounded-full bg-muted px-2 py-0.5">
+                              {event.category}
+                            </span>
+                          </>
+                        )}
                       </div>
                     </div>
                     <div className="flex gap-1 opacity-0 transition-opacity group-hover:opacity-100">

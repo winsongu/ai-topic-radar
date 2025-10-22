@@ -10,20 +10,17 @@ const filterCategories = [
   { id: "lunar", name: "农历假日", color: "border-pink-500" },
   { id: "international", name: "国际节日", color: "border-red-500" },
   { id: "memorial", name: "纪念日", color: "border-cyan-500" },
-  { id: "custom", name: "自定义", color: "border-purple-500" },
-  { id: "company", name: "公司活动", color: "border-blue-500" },
-  { id: "product", name: "产品活动", color: "border-green-500" },
-  { id: "industry", name: "行业活动", color: "border-indigo-500" },
-  { id: "marketing", name: "营销活动", color: "border-pink-500" },
 ]
 
 interface FilterModalProps {
   selectedFilters: string[]
   onFiltersChange: (filters: string[]) => void
+  showCustomEvents: boolean
+  onShowCustomEventsChange: (show: boolean) => void
   onClose: () => void
 }
 
-export function FilterModal({ selectedFilters, onFiltersChange, onClose }: FilterModalProps) {
+export function FilterModal({ selectedFilters, onFiltersChange, showCustomEvents, onShowCustomEventsChange, onClose }: FilterModalProps) {
   const toggleFilter = (filterId: string) => {
     if (selectedFilters.includes(filterId)) {
       onFiltersChange(selectedFilters.filter((id) => id !== filterId))
@@ -44,25 +41,48 @@ export function FilterModal({ selectedFilters, onFiltersChange, onClose }: Filte
 
         <h2 className="mb-6 text-2xl font-bold">筛选事件</h2>
 
-        <div className="mb-8 grid grid-cols-3 gap-4">
-          {filterCategories.map((category) => (
-            <div key={category.id} className="flex items-center gap-2">
+        <div className="mb-6">
+          <h3 className="mb-3 text-sm font-semibold text-muted-foreground">系统节日</h3>
+          <div className="grid grid-cols-3 gap-4">
+            {filterCategories.map((category) => (
+              <div key={category.id} className="flex items-center gap-2">
+                <Checkbox
+                  id={category.id}
+                  checked={selectedFilters.includes(category.id)}
+                  onCheckedChange={() => toggleFilter(category.id)}
+                  className="rounded"
+                />
+                <label
+                  htmlFor={category.id}
+                  className={`cursor-pointer rounded-lg border-2 px-3 py-1.5 text-sm font-medium transition-colors ${
+                    category.color
+                  } ${selectedFilters.includes(category.id) ? "bg-primary/10" : "bg-muted/30 hover:bg-muted/50"}`}
+                >
+                  {category.name}
+                </label>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-8 rounded-xl border-2 border-purple-200 bg-purple-50/50 p-4 dark:border-purple-800 dark:bg-purple-950/20">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
               <Checkbox
-                id={category.id}
-                checked={selectedFilters.includes(category.id)}
-                onCheckedChange={() => toggleFilter(category.id)}
+                id="customEvents"
+                checked={showCustomEvents}
+                onCheckedChange={(checked) => onShowCustomEventsChange(checked === true)}
                 className="rounded"
               />
-              <label
-                htmlFor={category.id}
-                className={`cursor-pointer rounded-lg border-2 px-3 py-1.5 text-sm font-medium transition-colors ${
-                  category.color
-                } ${selectedFilters.includes(category.id) ? "bg-primary/10" : "bg-muted/30 hover:bg-muted/50"}`}
-              >
-                {category.name}
+              <label htmlFor="customEvents" className="cursor-pointer">
+                <div className="font-semibold text-purple-700 dark:text-purple-300">显示自定义事件</div>
+                <div className="text-xs text-purple-600 dark:text-purple-400">包含所有手动添加的营销节点</div>
               </label>
             </div>
-          ))}
+            <div className="rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-700 dark:bg-purple-900 dark:text-purple-300">
+              自定义
+            </div>
+          </div>
         </div>
 
         <Button
