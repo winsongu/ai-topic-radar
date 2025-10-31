@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WPS稻壳市场洞察日报</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .header .date {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 15px;
+            border-radius: 20px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .section-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .item {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .item:hover {
+            background: #e9ecef;
+            transform: translateX(3px);
+        }
+        
+        .item-rank {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-right: 12px;
+        }
+        
+        .item-content {
+            flex: 1;
+        }
+        
+        .item-title {
+            font-size: 0.95rem;
+            color: #333;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+        
+        .item-meta {
+            font-size: 0.8rem;
+            color: #999;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #e7f3ff;
+            color: #0066cc;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 5px;
+        }
+        
+        .tag.hot {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .tag.new {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .opportunity {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe8a1 100%);
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        .opportunity-title {
+            font-weight: 600;
+            color: #856404;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+        
+        .opportunity-content {
+            font-size: 0.88rem;
+            color: #664d03;
+            line-height: 1.6;
+        }
+        
+        .priority-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        
+        .priority-p0 {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .priority-p1 {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 0.9rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>📊 WPS稻壳市场洞察日报</h1>
+            <div class="date">2025-10-31 星期四</div>
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="content">
+            <!-- 1. 跨平台热点 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">🔥</div>
+                    <div class="section-title">跨平台热点 Top 5</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-rank">1</div>
+                    <div class="item-content">
+                        <div class="item-title">微博热门话题</div>
+                        <div class="item-meta">
+                            <span class="tag hot">微博</span>
+                            <span>热度: 2000万</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-rank">2</div>
+                    <div class="item-content">
+                        <div class="item-title">明星动态更新</div>
+                        <div class="item-meta">
+                            <span class="tag hot">微博</span>
+                            <span>热度: 1500万</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-rank">3</div>
+                    <div class="item-content">
+                        <div class="item-title">社会热点事件</div>
+                        <div class="item-meta">
+                            <span class="tag hot">微博</span>
+                            <span>热度: 1200万</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-rank">4</div>
+                    <div class="item-content">
+                        <div class="item-title">习主席的这些话亮明中国态度</div>
+                        <div class="item-meta">
+                            <span class="tag">百度</span>
+                            <span>热度: 790万</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-rank">5</div>
+                    <div class="item-content">
+                        <div class="item-title">美参议院通过终止特朗普关税决议</div>
+                        <div class="item-meta">
+                            <span class="tag">百度</span>
+                            <span>热度: 781万</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. PPT竞品动态 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">🎨</div>
+                    <div class="section-title">PPT竞品动态</div>
+                </div>
+
+                <div class="item">
+                    <div class="item-rank">新</div>
+                    <div class="item-content">
+                        <div class="item-title">红色简约风国际宽容日PPT模板</div>
+                        <div class="item-meta">
+                            <span class="tag new">熊猫办公</span>
+                            <span class="tag">红色</span>
+                            <span class="tag">简约</span>
+                            <span>今日上新</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-rank">新</div>
+                    <div class="item-content">
+                        <div class="item-title">蓝色商务风中国记者节PPT通用模板</div>
+                        <div class="item-meta">
+                            <span class="tag new">熊猫办公</span>
+                            <span class="tag">蓝色</span>
+                            <span class="tag">商务</span>
+                            <span>今日上新</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-rank">新</div>
+                    <div class="item-content">
+                        <div class="item-title">粉色清新风朝花夕拾重点知识PPT模版</div>
+                        <div class="item-meta">
+                            <span class="tag new">熊猫办公</span>
+                            <span class="tag">粉色</span>
+                            <span>教育类</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-rank">🔥</div>
+                    <div class="item-content">
+                        <div class="item-title">红色商务风2026年马年年会邀请函PPT模板</div>
+                        <div class="item-meta">
+                            <span class="tag new">熊猫办公</span>
+                            <span class="tag">红色</span>
+                            <span class="tag">商务</span>
+                            <span>昨日上新 · 年会热点</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 海报竞品动态 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">🖼️</div>
+                    <div class="section-title">海报竞品动态</div>
+                </div>
+                
+                <div class="empty-state">
+                    📋 海报监控功能开发中，敬请期待...
+                </div>
+            </div>
+
+            <!-- 4. 机会点识别 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">💡</div>
+                    <div class="section-title">机会点识别</div>
+                </div>
+
+                <div class="opportunity">
+                    <div class="opportunity-title">
+                        <span class="priority-badge priority-p0">P0</span>
+                        国际宽容日主题PPT（11月16日）
+                    </div>
+                    <div class="opportunity-content">
+                        <strong>依据：</strong>竞品今日上新，教育机构德育课件需求 · 
+                        <strong>建议：</strong>补充卡通风格差异化 · 
+                        <strong>预估：</strong>200-400次/月
+                    </div>
+                </div>
+
+                <div class="opportunity">
+                    <div class="opportunity-title">
+                        <span class="priority-badge priority-p0">P0</span>
+                        2026马年年会系列
+                    </div>
+                    <div class="opportunity-content">
+                        <strong>依据：</strong>竞品已提前布局年会主题，企业年底采购高峰期 · 
+                        <strong>建议：</strong>年会邀请函、颁奖典礼、总结汇报等5-8个模板 · 
+                        <strong>预估：</strong>1000-2000次/月
+                    </div>
+                </div>
+
+                <div class="opportunity">
+                    <div class="opportunity-title">
+                        <span class="priority-badge priority-p1">P1</span>
+                        《朝花夕拾》教学系列
+                    </div>
+                    <div class="opportunity-content">
+                        <strong>依据：</strong>竞品推出重点知识模板，初中语文必读书目刚需 · 
+                        <strong>建议：</strong>读书分享、知识点解析、人物分析等3-5个模板 · 
+                        <strong>预估：</strong>600-1000次/月
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            AI选题雷达 · 数据来源：百度、微博、知乎、中新网、人民网、36氪 + 竞品PPT平台 · 
+            <a href="https://ai.winsongu.com/" target="_blank" style="color: #667eea; text-decoration: none;">ai.winsongu.com</a>
+        </div>
+    </div>
+
+    <script>
+        // 显示当前日期
+        const today = new Date();
+        const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        const dateStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')} ${weekdays[today.getDay()]}`;
+        document.querySelector('.header .date').textContent = dateStr;
+
+        console.log('📊 WPS稻壳洞察日报已加载');
+        console.log('📅 日期：' + dateStr);
+    </script>
+</body>
+</html>
+
